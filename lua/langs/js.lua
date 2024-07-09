@@ -1,5 +1,5 @@
 local lang = {
-	lang = "json",
+	lang = "javascript",
 	formatter = { "biome" },
 	treesitter = "javascript",
 	linters = { "biomejs" },
