@@ -25,3 +25,9 @@ vim.api.nvim_set_keymap(
 	[[:<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>]],
 	{ noremap = true, silent = true }
 )
+
+-- Define mappings for navigating panes
+vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, silent = true }) -- Up
+vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, silent = true }) -- Down
+vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, silent = true }) -- Left
+vim.keymap.set("n", "<A-l>", "<C-w>l", { noremap = true, silent = true }) -- Right
