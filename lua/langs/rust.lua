@@ -25,6 +25,19 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 					procMacro = {
 						enable = true,
 					},
+					["rust-analyzer"] = {
+						checkOnSave = {
+							allFeatures = true,
+							overrideCommand = {
+								"cargo",
+								"clippy",
+								"--workspace",
+								"--message-format=json",
+								"--all-targets",
+								"--all-features",
+							},
+						},
+					},
 				},
 			})
 		end)
