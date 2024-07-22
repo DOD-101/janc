@@ -1,6 +1,11 @@
 local SEVERITY_FILTER_LEVEL = "WARN"
 
-local function severity_filter(diagnostics, severity_level)
+---Returns true if diagnostics of the specified level or higher exist
+---@param diagnostics table
+---@param severity_level string
+---@param bufnr number
+---@return boolean
+local function severity_filter(diagnostics, severity_level, bufnr)
 	local severity_nums = {
 		ERROR = 1,
 		WARN = 2,
@@ -9,7 +14,7 @@ local function severity_filter(diagnostics, severity_level)
 	}
 
 	for _, diagnostic in ipairs(diagnostics) do
-		if diagnostic.severity <= severity_nums[severity_level] then
+		if diagnostic.severity <= severity_nums[severity_level] and diagnostic.bufnr == bufnr then
 			return true
 		end
 	end
@@ -44,10 +49,12 @@ end)
 vim.keymap.set("n", "ge", function()
 	local diagnostics = vim.diagnostic.get()
 
-	local warns = severity_filter(diagnostics, SEVERITY_FILTER_LEVEL)
+	local bufnr = vim.fn.bufnr()
+	local warns = severity_filter(diagnostics, SEVERITY_FILTER_LEVEL, bufnr)
 
 	if warns then
 		vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity[SEVERITY_FILTER_LEVEL] } })
+		print(type(diagnostics))
 	else
 		vim.diagnostic.goto_next({})
 	end
@@ -55,8 +62,9 @@ end)
 
 vim.keymap.set("n", "gE", function()
 	local diagnostics = vim.diagnostic.get()
+	local bufnr = vim.fn.bufnr()
 
-	local warns = severity_filter(diagnostics, SEVERITY_FILTER_LEVEL)
+	local warns = severity_filter(diagnostics, SEVERITY_FILTER_LEVEL, bufnr)
 
 	if warns then
 		vim.diagnostic.goto_prev({ severity = { min = vim.diagnostic.severity[SEVERITY_FILTER_LEVEL] } })
