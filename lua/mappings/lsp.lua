@@ -1,11 +1,31 @@
-local opts = {}
+vim.keymap.set("n", "gd", function()
+	vim.lsp.buf.definition()
+end)
 
-vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-vim.api.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-vim.api.nvim_set_keymap("n", "gn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+vim.keymap.set("n", "gD", function()
+	vim.lsp.buf.declaration()
+end)
 
-vim.api.nvim_set_keymap("n", "ge", "<cmd> lua vim.diagnostic.goto_next({ source = 'workspace' })<CR>", opts)
-vim.api.nvim_set_keymap("n", "gE", "<cmd> lua vim.diagnostic.goto_prev({ source = 'workspace' })<CR>", opts)
+vim.keymap.set("n", "gh", function()
+	vim.lsp.buf.hover()
+end)
+
+vim.keymap.set("n", "gi", function()
+	vim.lsp.buf.implementation()
+end)
+
+vim.keymap.set("n", "gn", function()
+	vim.lsp.buf.rename()
+end)
+
+vim.keymap.set("n", "gr", function()
+	vim.lsp.buf.references()
+end)
+
+vim.keymap.set("n", "ge", function()
+	vim.diagnostic.goto_next({ source = "workspace", severity = { min = vim.diagnostic.severity.WARN } })
+end)
+
+vim.keymap.set("n", "gE", function()
+	vim.diagnostic.goto_prev({ source = "workspace" })
+end)
