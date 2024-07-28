@@ -6,13 +6,12 @@ local plugin = {
 		require("lualine").setup({
 			sections = {
 				lualine_b = { "branch", "diagnostics" },
-				lualine_x = {
-					"encoding",
-					"filetype",
-				},
 				lualine_c = {
 					{ "filename", path = 1 },
 				},
+				lualine_x = {},
+				lualine_y = { "filetype" },
+				lualine_z = { "progress" },
 			},
 		})
 	end,
