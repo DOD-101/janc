@@ -3,6 +3,7 @@ local langs = {
 	require("langs.html"),
 	require("langs.css"),
 	require("langs.js"),
+	require("langs.json"),
 	require("langs.python"),
 	require("langs.sh"),
 	require("langs.rust"),
