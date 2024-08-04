@@ -31,3 +31,5 @@ vim.keymap.set("n", "<A-k>", "<C-w>k", { noremap = true, silent = true }) -- Up
 vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, silent = true }) -- Down
 vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, silent = true }) -- Left
 vim.keymap.set("n", "<A-l>", "<C-w>l", { noremap = true, silent = true }) -- Right
+vim.keymap.set("n", "<A-+>", ":vertical resize +5<CR>", { noremap = true, silent = true }) -- Increase pane size
+vim.keymap.set("n", "<A-->", ":vertical resize -5<CR>", { noremap = true, silent = true }) -- Decrease pane size
