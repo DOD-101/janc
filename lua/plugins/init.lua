@@ -17,6 +17,7 @@ local plugins = {
 	require("plugins.lualine"),
 	require("plugins.commentary"),
 	require("plugins.rainbow"),
+	require("plugins.octo"),
 }
 
 return plugins
