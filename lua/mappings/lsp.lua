@@ -59,6 +59,7 @@ end)
 
 vim.keymap.set("n", "gh", function()
 	vim.lsp.buf.hover()
+	require("diagnostic")()
 end)
 
 vim.keymap.set("n", "gi", function()

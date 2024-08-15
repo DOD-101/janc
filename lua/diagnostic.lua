@@ -14,6 +14,7 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
+
 local function open_diagnostics()
 	local opts = {
 		focusable = false,
@@ -33,8 +34,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 	end,
 })
 
-vim.keymap.set("n", "<leader>d", function()
-	-- If we find a floating window, close it.
+local function toggle_diagnostics()
 	if open_diagnostic == false then
 		open_diagnostic = true
 		open_diagnostics()
@@ -48,10 +48,15 @@ vim.keymap.set("n", "<leader>d", function()
 			break
 		end
 	end
-end, { desc = "Toggle Diagnostics" })
+end
+
+vim.keymap.set("n", "<leader>d", toggle_diagnostics, { desc = "Toggle Diagnostics" })
 
 vim.api.nvim_create_autocmd("CursorMoved", {
 	callback = function()
 		open_diagnostic = true
 	end,
 })
+
+-- return toggle_diagnostics so that other parts of the config can use it
+return toggle_diagnostics
