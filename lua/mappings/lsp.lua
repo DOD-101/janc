@@ -22,30 +22,6 @@ local function severity_filter(diagnostics, severity_level, bufnr)
 	return false
 end
 
-vim.keymap.set("n", "gd", function()
-	vim.lsp.buf.definition()
-end)
-
-vim.keymap.set("n", "gD", function()
-	vim.lsp.buf.declaration()
-end)
-
-vim.keymap.set("n", "gh", function()
-	vim.lsp.buf.hover()
-end)
-
-vim.keymap.set("n", "gi", function()
-	vim.lsp.buf.implementation()
-end)
-
-vim.keymap.set("n", "gn", function()
-	vim.lsp.buf.rename()
-end)
-
-vim.keymap.set("n", "gr", function()
-	vim.lsp.buf.references()
-end)
-
 vim.keymap.set("n", "ge", function()
 	local diagnostics = vim.diagnostic.get()
 
@@ -72,3 +48,39 @@ vim.keymap.set("n", "gE", function()
 		vim.diagnostic.goto_prev({})
 	end
 end)
+
+vim.keymap.set("n", "gd", function()
+	vim.lsp.buf.definition()
+end)
+
+vim.keymap.set("n", "gD", function()
+	vim.lsp.buf.declaration()
+end)
+
+vim.keymap.set("n", "gh", function()
+	vim.lsp.buf.hover()
+end)
+
+vim.keymap.set("n", "gi", function()
+	vim.lsp.buf.implementation()
+end)
+
+vim.keymap.set("n", "gn", function()
+	vim.lsp.buf.rename()
+end)
+
+vim.keymap.set("n", "gr", function()
+	vim.lsp.buf.references()
+end)
+
+-- Go to quickfix entry and close window
+vim.keymap.set("n", "<C-CR>", function()
+	if vim.api.nvim_buf_get_name(0) == "" then
+		local bufnr = vim.api.nvim_get_current_buf()
+		-- Get the line the cursor is on and go to that entry
+		local linenr = vim.fn.line(".")
+		vim.cmd("cc" .. linenr)
+		-- Close the buf
+		vim.cmd("bd" .. bufnr)
+	end
+end, { noremap = false, silent = false })
