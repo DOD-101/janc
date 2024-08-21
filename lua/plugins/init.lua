@@ -18,6 +18,7 @@ local plugins = {
 	require("plugins.commentary"),
 	require("plugins.rainbow"),
 	require("plugins.octo"),
+	require("plugins.todo"),
 }
 
 return plugins
