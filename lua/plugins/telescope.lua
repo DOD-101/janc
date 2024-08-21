@@ -13,7 +13,7 @@ local plugin = {
 	config = function()
 		require("telescope").setup({
 			defaults = {
-				file_ignore_patterns = { "%.git/.*" },
+				file_ignore_patterns = { "%.git/.*", "target" },
 				layout_config = {
 					horizontal = {
 						width = 0.8,
