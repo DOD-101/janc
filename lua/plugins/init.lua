@@ -19,6 +19,7 @@ local plugins = {
 	require("plugins.rainbow"),
 	require("plugins.octo"),
 	require("plugins.todo"),
+	require("plugins.leap"),
 }
 
 return plugins
