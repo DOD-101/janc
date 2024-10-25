@@ -7,6 +7,8 @@ local langs = {
 	require("langs.python"),
 	require("langs.sh"),
 	require("langs.rust"),
+	require("langs.nix"),
+	require("langs.hypr"),
 }
 
 local formatters = {}
@@ -27,7 +29,7 @@ require("mason").setup({
 	},
 })
 
-require("mason-lspconfig").setup({ automatic_installation = true })
+require("mason-lspconfig").setup({ automatic_installation = false })
 
 require("conform").setup({
 	formatters_by_ft = formatters,
