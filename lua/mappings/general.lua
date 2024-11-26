@@ -12,7 +12,7 @@ end, {})
 
 -- tabs
 
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { noremap = true, silent = true, desc = "New tab" })
+vim.keymap.set("n", "<C-t>", ":tabnew<CR>", { noremap = true, silent = true, desc = "New tab" })
 vim.keymap.set("n", "<C-l>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Tab next" })
 vim.keymap.set("n", "<C-h>", ":tabprevious<CR>", { noremap = true, silent = true, desc = "Tab previous" })
 
