@@ -1,7 +1,9 @@
 ## TODO 
 
-- Support for more langs
-- Understand Tressitter 
-- Optimize Performance
-    - Is an LSP needed for HTML? 
+- [ ] Understand Tressitter 
+- [ ] Optimize Performance
+- [ ] Make an install all LSP command / just install them all by default
+- [ ] find a way to get better spell checking
+- [ ] make a warning about missing things for different langs (formatters etc.)
+- [ ] look into rust-tools
 
