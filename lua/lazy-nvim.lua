@@ -23,5 +23,4 @@ end
 
 merge(require("plugins"))
 
-table.insert(plugins, { dir = "/home/david/.config/nvim/nvim-testing/lua/themes/ocean_breeze", lazy = true })
 require("lazy").setup(plugins, {})
