@@ -11,6 +11,7 @@ local plugin = {
 			"f3fora/cmp-spell",
 			"onsails/lspkind.nvim",
 			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lua",
 			{
 				"L3MON4D3/LuaSnip",
 				version = "v2.*",
@@ -146,6 +147,7 @@ local plugin = {
 					{ name = "path" },
 					{ name = "codeium" },
 					{ name = "nvim_lsp_signature_help" },
+					{ name = "nvim_lua" },
 				}),
 			})
 		end,
