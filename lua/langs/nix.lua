@@ -10,14 +10,30 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 	pattern = lang.pattern,
 	once = true,
 	callback = function()
-		require("langs.install").ensure_installed("nil_ls", function()
-			local lspconfig = require("lspconfig")
+		local lspconfig = require("lspconfig")
 
-			lspconfig.nil_ls.setup({
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				filetypes = { "nix" },
-			})
-		end)
+		lspconfig.nixd.setup({
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			filetypes = { "nix" },
+			settings = {
+				nixd = {
+					nixpkgs = {
+						expr = "import <nixpkgs> { }",
+					},
+					formatting = {
+						command = { "nixfmt" },
+					},
+					options = {
+						nixos = {
+							expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.nix101-0.options',
+						},
+						home_manager = {
+							expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.nix101-0.options.home-manager.users.value.david',
+						},
+					},
+				},
+			},
+		})
 	end,
 })
 
