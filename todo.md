@@ -6,4 +6,5 @@
 - [ ] find a way to get better spell checking
 - [ ] make a warning about missing things for different langs (formatters etc.)
 - [ ] look into rust-tools
+- [ ] create some lua snips / understand it (lib.fakeHash)
 
