@@ -4,6 +4,7 @@ local lang = {
 	treesitter = "nix",
 	linters = { "" },
 	pattern = "*.nix",
+	tabsize = 2,
 }
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {

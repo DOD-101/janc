@@ -4,6 +4,7 @@ local lang = {
 	treesitter = "css",
 	linters = { "" },
 	pattern = { "*.css", ".scss" },
+	tabsize = 2,
 }
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {

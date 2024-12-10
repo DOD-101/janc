@@ -17,6 +17,10 @@ local treesitter = {}
 for _, lang in ipairs(langs) do
 	formatters[lang.lang] = lang.formatter
 	table.insert(treesitter, lang.treesitter)
+
+	if lang.tabsize then
+		vim.cmd("setlocal tabstop=" .. lang.tabsize)
+	end
 end
 
 require("mason").setup({
