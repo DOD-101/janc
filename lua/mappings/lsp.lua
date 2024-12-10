@@ -74,6 +74,10 @@ vim.keymap.set("n", "gr", function()
 	vim.lsp.buf.references()
 end)
 
+vim.keymap.set("n", "gI", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)
+
 -- Go to quickfix entry and close window
 vim.keymap.set("n", "<C-CR>", function()
 	if vim.api.nvim_buf_get_name(0) == "" then

@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 			settings = {
 				nixd = {
 					nixpkgs = {
-						expr = "import <nixpkgs> { }",
+						expr = '(builtins.getFlake ("git+file://" + toString ./.)).inputs.nixpkgs { }',
 					},
 					formatting = {
 						command = { "nixfmt" },
@@ -34,6 +34,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 				},
 			},
 		})
+
+		vim.lsp.inlay_hint.enable(true)
 	end,
 })
 
