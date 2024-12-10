@@ -19,6 +19,7 @@ local plugin = {
 				build = "make install_jsregexp",
 				config = function()
 					require("luasnip.loaders.from_vscode").lazy_load()
+					require("luasnip.loaders.from_lua").load({ paths = "./snippets/" })
 				end,
 				dependencies = {
 					"rafamadriz/friendly-snippets",
@@ -147,7 +148,7 @@ local plugin = {
 					{ name = "path" },
 					{ name = "codeium" },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "nvim_lua" },
+					{ name = "nvim_lua", priority = 10 },
 				}),
 			})
 		end,
