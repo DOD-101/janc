@@ -19,7 +19,12 @@ for _, lang in ipairs(langs) do
 	table.insert(treesitter, lang.treesitter)
 
 	if lang.tabsize then
-		vim.cmd("setlocal tabstop=" .. lang.tabsize)
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
+			pattern = lang.pattern,
+			callback = function()
+				vim.cmd("setlocal tabstop=" .. lang.tabsize)
+			end,
+		})
 	end
 end
 
