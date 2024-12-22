@@ -10,11 +10,15 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 	pattern = lang.pattern,
 	once = true,
 	callback = function()
-		require("langs.install").ensure_installed("vtsls", function()
+		require("langs.install").ensure_installed("jsonls", function()
 			local lspconfig = require("lspconfig")
 
-			lspconfig.vtsls.setup({
+			lspconfig.jsonls.setup({
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				settings = {
+					schemas = require("schemastore").json.schemas(),
+					validate = { enable = true },
+				},
 				filetypes = { "json" },
 			})
 		end)
