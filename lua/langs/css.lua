@@ -3,7 +3,7 @@ local lang = {
 	formatter = { "stylelint", "prettier" },
 	treesitter = "css",
 	linters = { "" },
-	pattern = { "*.css", ".scss" },
+	pattern = { "*.css", "*.scss" },
 	tabsize = 2,
 }
 
