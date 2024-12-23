@@ -40,3 +40,6 @@ vim.keymap.set("n", "<A-S-->", ":resize -5<CR>", { noremap = true, silent = true
 vim.keymap.set("n", "<A-s>", ":vertical split<CR>", { noremap = true, silent = true }) -- create new split
 vim.keymap.set("n", "<A-+>", ":vertical resize +5<CR>", { noremap = true, silent = true }) -- Increase pane size
 vim.keymap.set("n", "<A-->", ":vertical resize -5<CR>", { noremap = true, silent = true }) -- Decrease pane size
+
+-- copy the contents of "0 to the system clipboard
+vim.keymap.set("n", "<C-y>", ":let @+ = @0<CR>", { noremap = true, silent = true })
