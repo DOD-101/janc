@@ -1,21 +1,11 @@
+---@type Lang
 local lang = {
 	lang = "nix",
-	formatter = { "nixfmt" },
+	formatters = { "nixfmt" },
 	treesitter = "nix",
-	linters = { "" },
-	pattern = "*.nix",
-	tabsize = 2,
-}
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
-	pattern = lang.pattern,
-	once = true,
-	callback = function()
-		local lspconfig = require("lspconfig")
-
-		lspconfig.nixd.setup({
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			filetypes = { "nix" },
+	lsps = {
+		{
+			name = "nixd",
 			settings = {
 				nixd = {
 					nixpkgs = {
@@ -34,10 +24,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 					},
 				},
 			},
-		})
-
-		vim.lsp.inlay_hint.enable(true)
-	end,
-})
+		},
+	},
+	pattern = { "*.nix" },
+	tabsize = 2,
+}
 
 return lang

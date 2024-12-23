@@ -1,24 +1,17 @@
+-- TODO: Make sure this works for all shell script files
+
+---@type Lang
 local lang = {
 	lang = "sh",
-	formatter = { "shfmt" },
+	formatters = { "shfmt" },
+	lsps = {
+		{
+			name = "bashls",
+			settings = {},
+		},
+	},
 	treesitter = "bash",
-	linters = { "" },
-	pattern = "*.sh",
+	pattern = { "*.sh" },
 }
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
-	pattern = lang.pattern,
-	once = true,
-	callback = function()
-		require("langs.install").ensure_installed("bashls", function()
-			local lspconfig = require("lspconfig")
-
-			lspconfig.bashls.setup({
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				filetypes = { "sh" },
-			})
-		end)
-	end,
-})
 
 return lang

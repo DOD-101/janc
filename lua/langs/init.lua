@@ -1,10 +1,9 @@
 ---@class Lang A class representing all the config data for a language
 ---@field lang string The name of the language
----@field filetype string The vim file type
----@field formatter table A table of formatters to run on the buffer after saving
+---@field formatters table A table of formatters to run on the buffer after saving
 ---@field treesitter string The name of the treesitter for the language
 ---@field linters table | nil An optional table of linters to run on the buffer
----@field lsp lspConf Config relating to the LSP for the language
+---@field lsps lspConf[] Config relating to the LSP for the language
 ---@field pattern table A table of patterns for file extensions for the lang
 ---@field noSetup boolean | nil Weather to do the default setup for the lang
 ---@field tabsize number | nil The tabsize in. `nil` will leave this as the default.
@@ -31,7 +30,7 @@ local formatters = {}
 local treesitter = {}
 
 for _, lang in ipairs(langs) do
-	formatters[lang.lang] = lang.formatter
+	formatters[lang.lang] = lang.formatters
 	table.insert(treesitter, lang.treesitter)
 
 	if lang.tabsize then
@@ -47,21 +46,24 @@ for _, lang in ipairs(langs) do
 		goto continue
 	end
 
-	vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
-		pattern = lang.pattern,
-		once = true,
-		callback = function()
-			require("langs.install").ensure_installed(lang.lsp.name, lang.lsp.callback or function()
-				local lspconfig = require("lspconfig")
+	-- NOTE: We need this since one lang can have more than 1 LSP
+	for _, lsp in ipairs(lang.lsps) do
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
+			pattern = lang.pattern,
+			once = true,
+			callback = function()
+				require("langs.install").ensure_installed(lsp.name, lsp.callback or function()
+					local lspconfig = require("lspconfig")
 
-				lspconfig[lang.lsp.name].setup({
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
-					settings = lang.lsp.settings,
-					filetypes = { lang.filetype },
-				})
-			end)
-		end,
-	})
+					lspconfig[lsp.name].setup({
+						capabilities = require("cmp_nvim_lsp").default_capabilities(),
+						settings = lsp.settings,
+						filetypes = { lang.lang },
+					})
+				end)
+			end,
+		})
+	end
 
 	if lang.linters then
 		--- TODO: We could try being more agressive with the linting here

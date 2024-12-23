@@ -1,19 +1,11 @@
+---@type Lang
 local lang = {
 	lang = "rust",
-	formatter = { "rustfmt" },
+	formatters = { "rustfmt" },
 	treesitter = "rust",
-	linters = { "" },
-	pattern = "*.rs",
-}
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
-	pattern = lang.pattern,
-	once = true,
-	callback = function()
-		local lspconfig = require("lspconfig")
-		lspconfig.rust_analyzer.setup({
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			filetypes = { "rust" },
+	lsps = {
+		{
+			name = "rust_analyzer",
 			settings = {
 				cargo = {
 					buildScripts = {
@@ -37,16 +29,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
 					},
 				},
 			},
-		})
-	end,
-})
-
--- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
--- 	pattern = lang.pattern,
--- 	once = false,
--- 	callback = function()
--- 		require("lint").try_lint(lang.linters)
--- 	end,
--- })
+		},
+	},
+	pattern = { "*.rs" },
+}
 
 return lang
