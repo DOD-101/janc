@@ -52,15 +52,13 @@ for _, lang in ipairs(langs) do
 			pattern = lang.pattern,
 			once = true,
 			callback = function()
-				require("langs.install").ensure_installed(lsp.name, lsp.callback or function()
-					local lspconfig = require("lspconfig")
+				local lspconfig = require("lspconfig")
 
-					lspconfig[lsp.name].setup({
-						capabilities = require("cmp_nvim_lsp").default_capabilities(),
-						settings = lsp.settings,
-						filetypes = { lang.lang },
-					})
-				end)
+				lspconfig[lsp.name].setup({
+					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+					settings = lsp.settings,
+					filetypes = { lang.lang },
+				})
 			end,
 		})
 	end
