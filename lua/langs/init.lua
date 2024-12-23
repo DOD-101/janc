@@ -108,3 +108,28 @@ require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
 	indent = { enable = true },
 })
+
+--- Print out all tools (LSP, formatters & linters) for all languages
+vim.api.nvim_create_user_command("ListLangTools", function()
+	local output = ""
+	for _, lang in ipairs(langs) do
+		output = output .. "--" .. lang.lang .. "--" .. "\nLSPs:"
+		for _, lsp in ipairs(lang.lsps) do
+			output = output .. " " .. lsp.name
+		end
+
+		output = output .. "\nFormatters:"
+		for _, formatter in ipairs(lang.formatters) do
+			output = output .. " " .. formatter
+		end
+
+		output = output .. "\nLinters:"
+		for _, linter in ipairs(lang.linters or {}) do
+			output = output .. " " .. linter
+		end
+
+		output = output .. "\n\n"
+	end
+
+	print(output)
+end, {})
