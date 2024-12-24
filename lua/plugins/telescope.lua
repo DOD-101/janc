@@ -5,6 +5,7 @@ local plugin = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-symbols.nvim",
 		"BurntSushi/ripgrep",
+		"nvim-telescope/telescope-live-grep-args.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -36,38 +37,8 @@ local plugin = {
 					i = {
 						["<C-s>"] = actions.cycle_previewers_next,
 						["<C-a>"] = actions.cycle_previewers_prev,
-						["<M-CR>"] = function(prompt_bufnr)
-							local action_set = require("telescope.actions.set")
-							local action_state = require("telescope.actions.state")
-
-							local picker = action_state.get_current_picker(prompt_bufnr)
-							picker.get_selection_window = function(picker, _)
-								vim.cmd("vsplit")
-								local winnr = vim.api.nvim_get_current_win()
-
-								-- Unbind after using so next instance of the picker acts normally
-								picker.get_selection_window = nil
-								return winnr
-							end
-
-							return action_set.edit(prompt_bufnr, "edit")
-						end,
-						["<S-M-CR>"] = function(prompt_bufnr)
-							local action_set = require("telescope.actions.set")
-							local action_state = require("telescope.actions.state")
-
-							local picker = action_state.get_current_picker(prompt_bufnr)
-							picker.get_selection_window = function(picker, _)
-								vim.cmd("split")
-								local winnr = vim.api.nvim_get_current_win()
-
-								-- Unbind after using so next instance of the picker acts normally
-								picker.get_selection_window = nil
-								return winnr
-							end
-
-							return action_set.edit(prompt_bufnr, "edit")
-						end,
+						["<M-CR>"] = actions.select_vertical,
+						["<S-M-CR>"] = actions.select_horizontal,
 					},
 				},
 			},
@@ -79,6 +50,8 @@ local plugin = {
 			},
 		})
 		require("telescope").load_extension("fzf")
+
+		require("telescope").load_extension("live_grep_args")
 	end,
 }
 
