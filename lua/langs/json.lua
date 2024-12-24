@@ -1,8 +1,7 @@
 ---@class Lang
 local lang = {
-	lang = "json",
+	name = "json",
 	formatters = { "biome" },
-	treesitter = "json",
 	linters = { "biomejs" },
 	lsps = {
 		{

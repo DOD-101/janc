@@ -1,8 +1,6 @@
--- TODO: Make sure this works for all shell script files
-
 ---@type Lang
 local lang = {
-	lang = "sh",
+	name = "sh",
 	formatters = { "shfmt" },
 	lsps = {
 		{

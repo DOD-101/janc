@@ -1,8 +1,7 @@
 ---@type Lang
 local lang = {
-	lang = "javascript",
+	name = "javascript",
 	formatters = { "biome" },
-	treesitter = "javascript",
 	lsps = {
 		{
 			name = "vtsls",

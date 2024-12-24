@@ -1,8 +1,7 @@
 ---@type Lang
 local lang = {
-	lang = "hypr",
+	name = "hyprlang",
 	formatters = {},
-	treesitter = "hyprlang",
 	lsps = {
 		{
 			name = "hyprls",

@@ -1,8 +1,7 @@
 ---@type Lang
 local lang = {
-	lang = "css",
+	name = "css",
 	formatters = { "stylelint", "prettier" },
-	treesitter = "css",
 	lsps = {
 		{
 			name = "stylelint_lsp",

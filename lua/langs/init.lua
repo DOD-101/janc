@@ -1,7 +1,7 @@
 ---@class Lang A class representing all the config data for a language
----@field lang string The name of the language
+---@field name string The name of the language
 ---@field formatters table A table of formatters to run on the buffer after saving
----@field treesitter string The name of the treesitter for the language
+---@field treesitter string | nil Optional name of the treesitter for the language, defaults to the name
 ---@field linters table | nil An optional table of linters to run on the buffer
 ---@field lsps lspConf[] Config relating to the LSP for the language
 ---@field pattern table A table of patterns for file extensions for the lang
@@ -27,11 +27,11 @@ local langs = {
 }
 
 local formatters = {}
-local treesitter = {}
+local treesitters = {}
 
 for _, lang in ipairs(langs) do
-	formatters[lang.lang] = lang.formatters
-	table.insert(treesitter, lang.treesitter)
+	formatters[lang.name] = lang.formatters
+	table.insert(treesitters, lang.treesitter or lang.name)
 
 	if lang.tabsize then
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
@@ -57,7 +57,7 @@ for _, lang in ipairs(langs) do
 				lspconfig[lsp.name].setup({
 					capabilities = require("cmp_nvim_lsp").default_capabilities(),
 					settings = lsp.settings,
-					filetypes = { lang.lang },
+					filetypes = { lang.name },
 				})
 			end,
 		})
@@ -65,7 +65,7 @@ for _, lang in ipairs(langs) do
 
 	if lang.linters then
 		--- TODO: We could try being more agressive with the linting here
-		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufWritePost" }, {
 			pattern = lang.pattern,
 			once = false,
 			callback = function()
@@ -101,7 +101,7 @@ require("conform").setup({
 })
 
 require("nvim-treesitter.configs").setup({
-	ensure_install = treesitter,
+	ensure_install = treesitters,
 	auto_install = true,
 	highlight = { enable = true },
 	indent = { enable = true },
@@ -111,7 +111,7 @@ require("nvim-treesitter.configs").setup({
 vim.api.nvim_create_user_command("ListLangTools", function()
 	local output = ""
 	for _, lang in ipairs(langs) do
-		output = output .. "--" .. lang.lang .. "--" .. "\nLSPs:"
+		output = output .. "--" .. lang.name .. "--" .. "\nLSPs:"
 		for _, lsp in ipairs(lang.lsps) do
 			output = output .. " " .. lsp.name
 		end

@@ -1,8 +1,7 @@
 ---@type Lang
 local lang = {
-	lang = "nix",
+	name = "nix",
 	formatters = { "nixfmt" },
-	treesitter = "nix",
 	lsps = {
 		{
 			name = "nixd",
