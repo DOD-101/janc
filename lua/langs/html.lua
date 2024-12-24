@@ -1,8 +1,7 @@
 ---@type Lang
 local lang = {
-	lang = "html",
+	name = "html",
 	formatters = { "prettier" },
-	treesitter = "html",
 	lsps = {
 		{
 			name = "emmet_language_server",
