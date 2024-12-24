@@ -9,7 +9,6 @@ local plugins = {
 	require("plugins.treesitter"),
 	require("plugins.cmp"),
 	require("plugins.theme"),
-	require("plugins.vtsls"),
 	require("plugins.colortils"),
 	require("plugins.hexokinase"),
 	require("plugins.gv"),
