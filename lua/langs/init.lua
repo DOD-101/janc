@@ -24,6 +24,7 @@ local langs = {
 	require("langs.rust"),
 	require("langs.nix"),
 	require("langs.hypr"),
+	require("langs.markdown"),
 }
 
 local formatters = {}
