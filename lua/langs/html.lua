@@ -8,7 +8,7 @@ local lang = {
 			settings = {},
 		},
 	},
-	linters = { "biomejs" },
+	linters = { "biomejs", "htmlhint" },
 	pattern = { "*.html" },
 }
 
