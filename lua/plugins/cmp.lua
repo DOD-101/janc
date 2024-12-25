@@ -15,7 +15,7 @@ local plugin = {
 			{
 				"L3MON4D3/LuaSnip",
 				version = "v2.*",
-				-- install jsregexp (optional!).
+				-- install jsregexp (optional!)
 				build = "make install_jsregexp",
 				config = function()
 					require("luasnip.loaders.from_vscode").lazy_load()
@@ -26,15 +26,18 @@ local plugin = {
 				},
 			},
 			{
-
-				"Exafunction/codeium.nvim",
+				"zbirenbaum/copilot-cmp",
 				dependencies = {
-					"nvim-lua/plenary.nvim",
+					"zbirenbaum/copilot.lua",
+					config = function()
+						require("copilot").setup({
+							suggestion = { enabled = false },
+							panel = { enabled = false },
+						})
+					end,
 				},
 				config = function()
-					require("codeium").setup({
-						enable_chat = true,
-					})
+					require("copilot_cmp").setup()
 				end,
 			},
 		},
@@ -102,7 +105,7 @@ local plugin = {
 							Event = "",
 							Operator = "󰆕",
 							TypeParameter = "",
-							Codeium = "",
+							Copilot = "",
 						},
 					}),
 				},
@@ -137,18 +140,13 @@ local plugin = {
 							end,
 						},
 					},
-					{
-						name = "nvim_lsp",
-						entry_filter = function(entry)
-							return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
-						end,
-					},
-					{ name = "luasnip", option = { use_show_condition = false } },
-					{ name = "buffer", keyword_length = 3 },
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
 					{ name = "path" },
-					{ name = "codeium" },
+					{ name = "buffer", keyword_length = 3 },
+					{ name = "copilot" },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "nvim_lua", priority = 10 },
+					{ name = "nvim_lua" },
 				}),
 			})
 		end,
