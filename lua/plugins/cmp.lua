@@ -25,21 +25,6 @@ local plugin = {
 					"rafamadriz/friendly-snippets",
 				},
 			},
-			{
-				"zbirenbaum/copilot-cmp",
-				dependencies = {
-					"zbirenbaum/copilot.lua",
-					config = function()
-						require("copilot").setup({
-							suggestion = { enabled = false },
-							panel = { enabled = false },
-						})
-					end,
-				},
-				config = function()
-					require("copilot_cmp").setup()
-				end,
-			},
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -109,6 +94,21 @@ local plugin = {
 						},
 					}),
 				},
+				sorting = {
+					priority_weight = 1,
+					comparators = {
+						cmp.config.compare.offset,
+						cmp.config.compare.scopes,
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
+				},
 
 				snippet = {
 					expand = function(args)
@@ -140,12 +140,11 @@ local plugin = {
 							end,
 						},
 					},
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
+					{ name = "nvim_lsp", priority = 30 },
+					{ name = "luasnip", priority = 20 },
+					{ name = "nvim_lsp_signature_help", priority = 10 },
 					{ name = "path" },
 					{ name = "buffer", keyword_length = 3 },
-					{ name = "copilot" },
-					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lua" },
 				}),
 			})
