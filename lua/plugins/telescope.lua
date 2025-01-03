@@ -1,3 +1,18 @@
+local function open_git_show()
+	local action_state = require("telescope.actions.state")
+	local selection = action_state.get_selected_entry().value
+	vim.cmd("tab G show " .. selection)
+	vim.cmd("stopinsert")
+end
+
+local function copy_hash_to_clipboard(prompt_bufnr)
+	local action_state = require("telescope.actions.state")
+	local selection = action_state.get_selected_entry()
+	local actions = require("telescope.actions")
+	vim.fn.setreg("+", selection.value)
+	actions.close(prompt_bufnr)
+end
+
 local plugin = {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
@@ -46,6 +61,20 @@ local plugin = {
 				find_files = {
 					hidden = true,
 					follow = true,
+				},
+
+				git_commits = {
+					mappings = {
+						i = {
+							["<C-CR"] = copy_hash_to_clipboard,
+							["<CR>"] = open_git_show,
+						},
+						n = {
+
+							["<C-CR"] = copy_hash_to_clipboard,
+							["<CR>"] = open_git_show,
+						},
+					},
 				},
 			},
 		})
