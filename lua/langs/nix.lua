@@ -24,6 +24,10 @@ local lang = {
 				},
 			},
 		},
+		{
+			name = "nil_ls",
+			settings = {},
+		},
 	},
 	pattern = { "*.nix" },
 	tabsize = 2,
