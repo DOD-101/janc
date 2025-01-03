@@ -26,6 +26,7 @@ local langs = {
 	require("langs.hypr"),
 	require("langs.markdown"),
 	require("langs.yaml"),
+	require("langs.toml"),
 }
 
 local formatters = {}
