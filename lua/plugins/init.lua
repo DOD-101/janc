@@ -19,6 +19,7 @@ local plugins = {
 	require("plugins.octo"),
 	require("plugins.todo"),
 	require("plugins.leap"),
+	require("plugins.supermaven"),
 }
 
 return plugins
