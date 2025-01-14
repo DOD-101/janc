@@ -11,7 +11,7 @@ local plugins = {
 	require("plugins.theme"),
 	require("plugins.colortils"),
 	require("plugins.hexokinase"),
-	require("plugins.gv"),
+	require("plugins.git"),
 	require("plugins.gitgutter"),
 	require("plugins.lualine"),
 	require("plugins.commentary"),
