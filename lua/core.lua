@@ -29,4 +29,4 @@ require("langs")
 require("diagnostic")
 require("mappings")
 
-vim.cmd([[ colorscheme tokyonight ]])
+vim.cmd([[ colorscheme ]] .. (vim.env.JANC_NVIM_COLORSCHEME or "tokyonight"))
