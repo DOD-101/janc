@@ -17,8 +17,10 @@ local langs = {
 	require("langs.lua"),
 	require("langs.html"),
 	require("langs.css"),
+	require("langs.scss"),
 	require("langs.js"),
 	require("langs.json"),
+	require("langs.jsonc"),
 	require("langs.python"),
 	require("langs.sh"),
 	require("langs.rust"),
@@ -27,6 +29,7 @@ local langs = {
 	require("langs.markdown"),
 	require("langs.yaml"),
 	require("langs.toml"),
+	require("langs.yuck"),
 }
 
 local formatters = {}
