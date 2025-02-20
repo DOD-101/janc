@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "sh",
+	names = { "sh" },
 	formatters = { "shfmt" },
 	lsps = {
 		{
@@ -9,7 +9,7 @@ local lang = {
 		},
 	},
 	treesitter = "bash",
-	pattern = { "*.sh" },
+	patterns = { "*.sh" },
 }
 
 return lang

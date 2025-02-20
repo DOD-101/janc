@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "javascript",
+	names = { "javascript" },
 	formatters = { "biome" },
 	lsps = {
 		{
@@ -9,7 +9,7 @@ local lang = {
 		},
 	},
 	linters = { "biomejs" },
-	pattern = { "*.js" },
+	patterns = { "*.js" },
 }
 
 return lang

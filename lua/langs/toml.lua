@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "toml",
+	names = { "toml" },
 	formatters = { "taplo" },
 	lsps = {
 		{
@@ -11,7 +11,7 @@ local lang = {
 			},
 		},
 	},
-	pattern = { "*.toml" },
+	patterns = { "*.toml" },
 }
 
 return lang

@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "nix",
+	names = { "nix" },
 	formatters = { "nixfmt" },
 	lsps = {
 		{
@@ -29,7 +29,7 @@ local lang = {
 			settings = {},
 		},
 	},
-	pattern = { "*.nix" },
+	patterns = { "*.nix" },
 	tabsize = 2,
 }
 

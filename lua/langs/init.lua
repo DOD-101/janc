@@ -1,10 +1,10 @@
----@class Lang A class representing all the config data for a language
----@field name string The name of the language
+---@class Lang A class representing all the config data for a language or a group of languages
+---@field names string[] The name of the languages
 ---@field formatters table A table of formatters to run on the buffer after saving
 ---@field treesitter string? Optional name of the treesitter for the language, defaults to the name
 ---@field linters table? An optional table of linters to run on the buffer
 ---@field lsps lspConf[] Config relating to the LSP for the language
----@field pattern table A table of patterns for file extensions for the lang
+---@field patterns string[] A table of patterns for file extensions for the lang
 ---@field noSetup boolean? Weather to do the default setup for the lang
 ---@field tabsize number? The tabsize in. `nil` will leave this as the default.
 
@@ -17,10 +17,8 @@ local langs = {
 	require("langs.lua"),
 	require("langs.html"),
 	require("langs.css"),
-	require("langs.scss"),
 	require("langs.js"),
 	require("langs.json"),
-	require("langs.jsonc"),
 	require("langs.python"),
 	require("langs.sh"),
 	require("langs.rust"),
@@ -36,12 +34,15 @@ local formatters = {}
 local treesitters = {}
 
 for _, lang in ipairs(langs) do
-	formatters[lang.name] = lang.formatters
-	table.insert(treesitters, lang.treesitter or lang.name)
+	for _, name in ipairs(lang.names) do
+		formatters[name] = lang.formatters
+	end
+
+	table.insert(treesitters, lang.treesitter)
 
 	if lang.tabsize then
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
-			pattern = lang.pattern,
+			pattern = lang.patterns,
 			callback = function()
 				vim.cmd("setlocal tabstop=" .. lang.tabsize)
 			end,
@@ -52,27 +53,20 @@ for _, lang in ipairs(langs) do
 		goto continue
 	end
 
-	-- NOTE: We need this since one lang can have more than 1 LSP
-	for _, lsp in ipairs(lang.lsps) do
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
-			pattern = lang.pattern,
-			once = true,
-			callback = function()
-				local lspconfig = require("lspconfig")
+	local lspconfig = require("lspconfig")
 
-				lspconfig[lsp.name].setup({
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
-					settings = lsp.settings,
-					filetypes = { lang.name },
-				})
-			end,
+	for _, lsp in ipairs(lang.lsps) do
+		lspconfig[lsp.name].setup({
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			settings = lsp.settings,
+			filetypes = lang.names,
 		})
 	end
 
 	if lang.linters then
 		--- TODO: We could try being more agressive with the linting here
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufWritePost" }, {
-			pattern = lang.pattern,
+			pattern = lang.patterns,
 			once = false,
 			callback = function()
 				require("lint").try_lint(lang.linters)
@@ -117,7 +111,7 @@ require("nvim-treesitter.configs").setup({
 vim.api.nvim_create_user_command("ListLangTools", function()
 	local output = ""
 	for _, lang in ipairs(langs) do
-		output = output .. "--" .. lang.name .. "--" .. "\nLSPs:"
+		output = output .. "--" .. table.concat(lang.names, ", ") .. "--" .. "\nLSPs:"
 		for _, lsp in ipairs(lang.lsps) do
 			output = output .. " " .. lsp.name
 		end

@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "hyprlang",
+	names = { "hyprlang" },
 	formatters = {},
 	lsps = {
 		{
@@ -8,7 +8,7 @@ local lang = {
 			settings = {},
 		},
 	},
-	pattern = { "*.conf" },
+	patterns = { "*.conf" },
 }
 
 vim.filetype.add({

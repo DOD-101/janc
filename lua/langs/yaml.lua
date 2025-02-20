@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "yaml",
+	names = { "yaml" },
 	lsps = {
 		{
 			name = "yamlls",
@@ -12,7 +12,7 @@ local lang = {
 	},
 	linters = { "yamllint", "actionlint" },
 	formatters = { "prettier" },
-	pattern = { "*.yml" },
+	patterns = { "*.yml" },
 }
 
 return lang

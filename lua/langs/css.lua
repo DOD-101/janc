@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "css",
+	names = { "css", "scss" },
 	formatters = { "stylelint", "prettier" },
 	lsps = {
 		{
@@ -12,7 +12,7 @@ local lang = {
 			settings = {},
 		},
 	},
-	pattern = { "*.css", "*.scss" },
+	patterns = { "*.css", "*.scss" },
 	tabsize = 2,
 }
 

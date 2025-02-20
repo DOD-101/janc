@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "html",
+	names = { "html" },
 	formatters = { "prettier" },
 	lsps = {
 		{
@@ -9,7 +9,7 @@ local lang = {
 		},
 	},
 	linters = { "biomejs", "htmlhint" },
-	pattern = { "*.html" },
+	patterns = { "*.html" },
 }
 
 return lang

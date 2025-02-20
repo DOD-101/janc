@@ -1,6 +1,6 @@
 ---@class Lang
 local lang = {
-	name = "json",
+	names = { "json", "jsonc" },
 	formatters = { "biome" },
 	linters = { "biomejs" },
 	lsps = {
@@ -12,7 +12,7 @@ local lang = {
 			},
 		},
 	},
-	pattern = { "*.json" },
+	patterns = { "*.json", "*.jsonc" },
 }
 
 return lang

@@ -1,10 +1,10 @@
 ---@class Lang
 local lang = {
-	name = "yuck",
+	names = {"yuck" },
 	formatters = { "topiary_yuck" },
 	lsps = {},
 	linters = {},
-	pattern = { "*.yuck" },
+	patterns = { "*.yuck" },
 	tabsize = 2,
 }
 

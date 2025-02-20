@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "rust",
+	names = { "rust" },
 	formatters = { "rustfmt" },
 	lsps = {
 		{
@@ -30,7 +30,7 @@ local lang = {
 			},
 		},
 	},
-	pattern = { "*.rs" },
+	patterns = { "*.rs" },
 }
 
 return lang

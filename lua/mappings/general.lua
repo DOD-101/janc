@@ -43,3 +43,12 @@ vim.keymap.set("n", "<A-->", ":vertical resize -5<CR>", { noremap = true, silent
 
 -- copy the contents of "0 to the system clipboard
 vim.keymap.set("n", "<C-y>", ":let @+ = @0<CR>", { noremap = true, silent = true })
+
+local job_id = -1
+vim.keymap.set("n", "gm", function()
+	if job_id ~= -1 then
+		vim.fn.jobstop(job_id)
+	end
+	local current_buffer_path = vim.fn.expand("%")
+	job_id = vim.fn.jobstart({ "igneous-md", "view", current_buffer_path })
+end, {})

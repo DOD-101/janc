@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	name = "python",
+	names = { "python" },
 	lsps = {
 		{
 			name = "pyright",
@@ -9,7 +9,7 @@ local lang = {
 	},
 	formatters = { "black" },
 	linters = { "pylint" },
-	pattern = { "*.py" },
+	patterns = { "*.py" },
 }
 
 return lang
