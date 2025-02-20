@@ -57,7 +57,7 @@ for _, lang in ipairs(langs) do
 
 	for _, lsp in ipairs(lang.lsps) do
 		lspconfig[lsp.name].setup({
-			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			settings = lsp.settings,
 			filetypes = lang.names,
 		})

@@ -7,7 +7,7 @@ local plugins = {
 	require("plugins.conform"),
 	require("plugins.lint"),
 	require("plugins.treesitter"),
-	require("plugins.cmp"),
+	-- require("plugins.cmp"),
 	require("plugins.theme"),
 	require("plugins.colortils"),
 	require("plugins.hexokinase"),
@@ -20,6 +20,7 @@ local plugins = {
 	require("plugins.todo"),
 	require("plugins.leap"),
 	require("plugins.supermaven"),
+	require("plugins.blink"),
 }
 
 return plugins
