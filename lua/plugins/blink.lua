@@ -1,7 +1,20 @@
 return {
 	"saghen/blink.cmp",
+	lazy = true,
+	event = "InsertEnter",
 	-- optional: provides snippets for the snippet source
 	dependencies = {
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = {
+				library = {
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
+		},
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -62,6 +75,13 @@ return {
 					name = "LSP",
 					module = "blink.cmp.sources.lsp",
 					async = true,
+					score_offset = 110,
+				},
+				snippets = {
+					name = "Snippets",
+					module = "blink.cmp.sources.snippets",
+					async = true,
+					score_offset = 100,
 				},
 			},
 			default = { "lsp", "path", "snippets", "buffer" },
