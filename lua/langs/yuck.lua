@@ -1,6 +1,6 @@
 ---@class Lang
 local lang = {
-	names = {"yuck" },
+	names = { "yuck" },
 	formatters = { "topiary_yuck" },
 	lsps = {},
 	linters = {},
@@ -13,8 +13,8 @@ require("conform").formatters.topiary_yuck = {
 		url = "https://github.com/michaelb/topiary",
 		description = "Topiary formatter, configured for yuck.",
 	},
-	command = "topiary",
-	args = { "format", "--language", "yuck" },
+	command = "topiary-yuck",
+	args = { "fmt", "--language", "yuck" },
 	stdin = true,
 }
 
