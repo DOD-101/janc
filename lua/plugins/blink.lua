@@ -2,8 +2,8 @@ return {
 	"saghen/blink.cmp",
 	lazy = true,
 	event = "InsertEnter",
-	-- optional: provides snippets for the snippet source
 	dependencies = {
+		"joshzcold/blink-ripgrep.nvim",
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
@@ -33,9 +33,7 @@ return {
 
 	-- use a release tag to download pre-built binaries
 	version = "*",
-	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
-	-- If you use nix, you can build from source using latest nightly rust with:
 	build = "nix run .#build-plugin",
 
 	---@module 'blink.cmp'
@@ -74,8 +72,8 @@ return {
 				lsp = {
 					name = "LSP",
 					module = "blink.cmp.sources.lsp",
-					async = true,
 					score_offset = 110,
+					timeout_ms = 300,
 				},
 				snippets = {
 					name = "Snippets",
@@ -83,8 +81,27 @@ return {
 					async = true,
 					score_offset = 100,
 				},
+				ripgrep = {
+					module = "blink-ripgrep",
+					name = "Ripgrep",
+					async = true,
+					score_offset = 90,
+					---@module 'blink-ripgrep'
+					---@type blink-ripgrep.Options
+					opts = {
+						prefix_min_len = 3,
+						context_size = 10,
+						max_filesize = "1M",
+						search_casing = "--smart-case",
+					},
+				},
+				path = {
+					name = "Path",
+					module = "blink.cmp.sources.path",
+					score_offset = 1000,
+				},
 			},
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
 		},
 
 		snippets = { preset = "luasnip" },
