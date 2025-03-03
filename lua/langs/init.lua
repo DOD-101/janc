@@ -28,6 +28,7 @@ local langs = {
 	require("langs.yaml"),
 	require("langs.toml"),
 	require("langs.yuck"),
+	require("langs.java"),
 }
 
 local formatters = {}

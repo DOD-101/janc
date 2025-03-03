@@ -20,6 +20,7 @@ local plugins = {
 	require("plugins.theme"),
 	require("plugins.todo"),
 	require("plugins.treesitter"),
+	require("plugins.java"),
 }
 
 return plugins
