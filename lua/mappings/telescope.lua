@@ -10,7 +10,3 @@ vim.keymap.set("n", "<leader>l", builtin.spell_suggest, {})
 vim.keymap.set("n", "<leader>t", function()
 	vim.cmd("TodoTelescope")
 end, {})
-
-vim.keymap.set("n", "<leader><leader>c", builtin.git_commits, {})
-vim.keymap.set("n", "<leader><leader>b", builtin.git_branches, {})
-vim.keymap.set("n", "<leader><leader>s", builtin.git_stash, {})
