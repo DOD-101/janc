@@ -84,14 +84,13 @@ return {
 				ripgrep = {
 					module = "blink-ripgrep",
 					name = "Ripgrep",
-					async = true,
-					score_offset = 90,
+					timeout_ms = 200,
 					---@module 'blink-ripgrep'
 					---@type blink-ripgrep.Options
 					opts = {
 						prefix_min_len = 3,
 						context_size = 10,
-						max_filesize = "1M",
+						max_filesize = "500k",
 						search_casing = "--smart-case",
 					},
 				},
