@@ -18,6 +18,7 @@ local langs = {
 	require("langs.html"),
 	require("langs.css"),
 	require("langs.js"),
+	require("langs.svelte"),
 	require("langs.json"),
 	require("langs.python"),
 	require("langs.sh"),
@@ -58,9 +59,8 @@ for _, lang in ipairs(langs) do
 
 	for _, lsp in ipairs(lang.lsps) do
 		lspconfig[lsp.name].setup({
-			-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			settings = lsp.settings,
-			filetypes = lang.names,
+			filetypes = require("lspconfig.configs")[lsp.name].filetypes,
 		})
 	end
 
@@ -88,7 +88,7 @@ require("mason").setup({
 	},
 })
 
-require("mason-lspconfig").setup({ automatic_installation = false })
+require("mason-lspconfig").setup({ ensure_installed = {}, automatic_installation = false })
 
 require("conform").setup({
 	formatters_by_ft = formatters,
@@ -97,7 +97,7 @@ require("conform").setup({
 	notify_on_error = false,
 	format_on_save = {
 		timeout_ms = 1000,
-		lsp_fallback = false,
+		lsp_fallback = true,
 	},
 })
 

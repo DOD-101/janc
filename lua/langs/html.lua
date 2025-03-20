@@ -7,6 +7,10 @@ local lang = {
 			name = "emmet_language_server",
 			settings = {},
 		},
+		{
+			name = "tailwindcss",
+			settings = {},
+		},
 	},
 	linters = { "biomejs", "htmlhint" },
 	patterns = { "*.html" },

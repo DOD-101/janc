@@ -44,7 +44,7 @@ return {
 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 		-- See the full "keymap" documentation for information on defining your own keymap.
 		keymap = {
-			preset = "default",
+			preset = "none",
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<C-Space>"] = { "show" },
@@ -73,7 +73,6 @@ return {
 					name = "LSP",
 					module = "blink.cmp.sources.lsp",
 					score_offset = 110,
-					timeout_ms = 300,
 				},
 				snippets = {
 					name = "Snippets",

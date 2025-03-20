@@ -11,6 +11,10 @@ local lang = {
 			name = "cssls",
 			settings = {},
 		},
+		{
+			name = "tailwindcss",
+			settings = {},
+		},
 	},
 	patterns = { "*.css", "*.scss" },
 	tabsize = 2,

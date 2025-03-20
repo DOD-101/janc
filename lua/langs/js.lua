@@ -1,15 +1,26 @@
 ---@type Lang
 local lang = {
-	names = { "javascript" },
+	names = { "javascript", "typescript" },
 	formatters = { "biome" },
 	lsps = {
 		{
 			name = "vtsls",
-			settings = {},
+			settings = {
+				typescript = {
+					inlayHints = {
+						parameterNames = { enabled = "literals" },
+						parameterTypes = { enabled = true },
+						variableTypes = { enabled = true },
+						propertyDeclarationTypes = { enabled = true },
+						functionLikeReturnTypes = { enabled = true },
+						enumMemberValues = { enabled = true },
+					},
+				},
+			},
 		},
 	},
 	linters = { "biomejs" },
-	patterns = { "*.js" },
+	patterns = { "*.js", "*.ts" },
 }
 
 return lang
