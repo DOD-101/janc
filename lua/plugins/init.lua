@@ -2,7 +2,7 @@ local plugins = {
 	require("plugins.autopairs"),
 	require("plugins.blink"),
 	require("plugins.colortils"),
-	require("plugins.commentary"),
+	require("plugins.comment"),
 	require("plugins.conform"),
 	require("plugins.git"),
 	require("plugins.gitgutter"),
