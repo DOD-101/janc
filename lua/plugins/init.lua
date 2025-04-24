@@ -13,7 +13,6 @@ local plugins = {
 	require("plugins.lualine"),
 	require("plugins.lush"),
 	require("plugins.mason"),
-	require("plugins.octo"),
 	require("plugins.rainbow"),
 	require("plugins.supermaven"),
 	require("plugins.telescope"),
