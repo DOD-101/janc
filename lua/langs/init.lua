@@ -11,6 +11,7 @@
 ---@class lspConf A class representing all the config for an LSP
 ---@field name string The name of the LSP
 ---@field settings table The settings table used in the setup function
+---@field filetypes string[]? The filetypes for the LSP
 ---@field callback function? A callback to override the default setup function
 
 local langs = {
@@ -60,7 +61,7 @@ for _, lang in ipairs(langs) do
 	for _, lsp in ipairs(lang.lsps) do
 		lspconfig[lsp.name].setup({
 			settings = lsp.settings,
-			filetypes = require("lspconfig.configs")[lsp.name].filetypes,
+			filetypes = lsp.filetypes or require("lspconfig.configs." .. lsp.name).default_config.filetypes,
 		})
 	end
 

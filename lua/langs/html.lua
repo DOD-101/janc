@@ -6,6 +6,16 @@ local lang = {
 		{
 			name = "emmet_language_server",
 			settings = {},
+			filetypes = {
+				"html",
+				"css",
+				"scss",
+				"sass",
+				"javascript",
+				"typescript",
+				"svelte",
+				"markdown",
+			},
 		},
 		{
 			name = "tailwindcss",
