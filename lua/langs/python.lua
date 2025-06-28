@@ -3,8 +3,15 @@ local lang = {
 	names = { "python" },
 	lsps = {
 		{
-			name = "pyright",
-			settings = {},
+			name = "basedpyright",
+			settings = {
+				inlayHints = {
+					variableTypes = true,
+					callArgumentNames = true,
+					functionReturnTypes = true,
+					genericTypes = true,
+				},
+			},
 		},
 	},
 	formatters = { "black" },
