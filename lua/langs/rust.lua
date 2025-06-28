@@ -15,22 +15,30 @@ local lang = {
 					enable = true,
 				},
 				["rust-analyzer"] = {
-					checkOnSave = {
-						allFeatures = true,
-						overrideCommand = {
-							"cargo",
-							"clippy",
-							"--workspace",
-							"--message-format=json",
-							"--all-targets",
-							"--all-features",
+					checkOnSave = true,
+					allFeatures = true,
+					preferSelf = true,
+					inlayHints = {
+						implicitDrops = {
+							enable = true,
 						},
+					},
+					cargo = {
+						features = "all",
+					},
+
+					check = {
+						command = "clippy",
 					},
 				},
 			},
 		},
 	},
 	patterns = { "*.rs" },
+}
+
+require("conform").formatters.rustfmt = {
+	command = "cargo fmt",
 }
 
 return lang
