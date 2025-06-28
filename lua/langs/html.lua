@@ -13,6 +13,8 @@ local lang = {
 				"sass",
 				"javascript",
 				"typescript",
+				"javascriptreact",
+				"typescriptreact",
 				"svelte",
 				"markdown",
 			},
