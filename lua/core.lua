@@ -1,3 +1,19 @@
+---Sets `vim.o.shell`
+---@return nil
+local function set_shell()
+	local shell = os.getenv("SHELL")
+
+	if shell == nil then
+		return
+	end
+
+	if string.match(shell, "zsh") then
+		shell = shell .. " -i"
+	end
+
+	vim.o.shell = shell
+end
+
 print("Hello")
 
 vim.o.number = true
@@ -23,6 +39,8 @@ vim.o.smartcase = true
 
 vim.o.splitbelow = true
 vim.g.netrw_browse_split = 2
+
+set_shell()
 
 require("lazy-nvim")
 require("langs")
