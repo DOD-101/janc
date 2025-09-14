@@ -18,6 +18,7 @@ local lang = {
 							expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.nix101-0.options',
 						},
 						home_manager = {
+							-- luacheck: ignore 631
 							expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.nix101-0.options.home-manager.users.value.david',
 						},
 					},

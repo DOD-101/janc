@@ -1,3 +1,5 @@
+---@diagnostic disable undefined-global
+-- luacheck: ignore 113
 return {
 	s("print", {
 		t("System.out.print("),

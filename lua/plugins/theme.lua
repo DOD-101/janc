@@ -12,6 +12,10 @@ local catppuccin = {
 	---@module 'catppuccin'
 	---@type CatppuccinOptions
 	opts = {
+		float = {
+			transparent = false,
+			solid = false,
+		},
 		integrations = {
 			gitgutter = true,
 			blink_cmp = true,
