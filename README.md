@@ -17,5 +17,4 @@ Then set `$NVIM_APPNAME = nvim/janc`
 After this open up nvim and everything should be setup.
 
 I recommend running `:ListLangTools` to get a list of all the tools the config is setup to use.
-Then decide on how you want to install these things.
-You can either use Mason or your system's package manager.
+Then install the things you want.

@@ -1,4 +1,4 @@
-local plugin = {
+return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
@@ -7,5 +7,3 @@ local plugin = {
 		-- refer to the configuration section below
 	},
 }
-
-return plugin

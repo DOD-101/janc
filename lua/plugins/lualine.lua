@@ -1,4 +1,4 @@
-local plugin = {
+return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -25,5 +25,3 @@ local plugin = {
 		require("lualine").setup(opts)
 	end,
 }
-
-return plugin

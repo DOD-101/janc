@@ -1,26 +1,21 @@
-local plugins = {
+return {
 	require("plugins.autopairs"),
 	require("plugins.blink"),
 	require("plugins.colortils"),
 	require("plugins.comment"),
 	require("plugins.conform"),
 	require("plugins.git"),
-	require("plugins.gitgutter"),
 	require("plugins.harpoon"),
 	require("plugins.hexokinase"),
+	require("plugins.java"),
 	require("plugins.leap"),
 	require("plugins.lint"),
+	require("plugins.lsp"),
 	require("plugins.lualine"),
-	require("plugins.lush"),
-	require("plugins.mason"),
 	require("plugins.rainbow"),
 	require("plugins.supermaven"),
 	require("plugins.telescope"),
 	require("plugins.theme"),
 	require("plugins.todo"),
 	require("plugins.treesitter"),
-	require("plugins.java"),
-	require("plugins.neotree"),
 }
-
-return plugins

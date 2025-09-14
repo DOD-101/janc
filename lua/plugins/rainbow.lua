@@ -1,4 +1,4 @@
-local plugin = {
+return {
 	"lukas-reineke/indent-blankline.nvim",
 	enabled = true,
 	config = function()
@@ -24,4 +24,3 @@ local plugin = {
 		})
 	end,
 }
-return plugin

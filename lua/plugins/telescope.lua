@@ -1,7 +1,7 @@
 local function open_git_show()
 	local action_state = require("telescope.actions.state")
 	local selection = action_state.get_selected_entry().value
-	vim.cmd("tab G show " .. selection)
+	vim.cmd("NeogitCommit " .. selection)
 	vim.cmd("stopinsert")
 end
 
@@ -13,9 +13,8 @@ local function copy_hash_to_clipboard(prompt_bufnr)
 	actions.close(prompt_bufnr)
 end
 
-local plugin = {
+return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.8",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-symbols.nvim",
@@ -83,5 +82,3 @@ local plugin = {
 		require("telescope").load_extension("live_grep_args")
 	end,
 }
-
-return plugin

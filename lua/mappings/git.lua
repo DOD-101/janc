@@ -2,8 +2,7 @@ local builtin = require("telescope.builtin")
 
 local git_leader = "<leader><leader>"
 
-vim.keymap.set("n", git_leader .. "g", ":tab Git<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", git_leader .. "f", ":Flog<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", git_leader .. "g", "<cmd>Neogit<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", git_leader .. "c", builtin.git_commits, {})
 vim.keymap.set("n", git_leader .. "b", builtin.git_branches, {})

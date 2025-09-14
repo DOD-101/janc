@@ -1,6 +1,4 @@
-local plugin = {
+return {
 	"stevearc/conform.nvim",
 	opts = {},
 }
-
-return plugin

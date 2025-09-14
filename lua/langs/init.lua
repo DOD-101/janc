@@ -79,18 +79,6 @@ for _, lang in ipairs(langs) do
 	::continue::
 end
 
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
-require("mason-lspconfig").setup({ ensure_installed = {}, automatic_installation = false })
-
 require("conform").setup({
 	formatters_by_ft = formatters,
 	log_level = vim.log.levels.INFO,
@@ -102,12 +90,8 @@ require("conform").setup({
 	},
 })
 
-require("nvim-treesitter.configs").setup({
-	ensure_install = treesitters,
-	auto_install = true,
-	highlight = { enable = true },
-	indent = { enable = true },
-})
+require("nvim-treesitter").install(treesitters, { summary = true })
+require("nvim-treesitter").update()
 
 --- Print out all tools (LSP, formatters & linters) for all languages
 vim.api.nvim_create_user_command("ListLangTools", function()

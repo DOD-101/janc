@@ -1,14 +1,11 @@
-local plugin = {
-	{
-		"supermaven-inc/supermaven-nvim",
-		config = function()
-			require("supermaven-nvim").setup({
-				keymaps = {
-					accept_suggestion = "<S-CR>",
-				},
-			})
-		end,
+return {
+	"supermaven-inc/supermaven-nvim",
+	lazy = true,
+	-- BUG: When running SupermavenStart to load Supermaven if it is already configured to run you get an error message
+	cmd = { "SupermavenStart", "SupermavenStop", "SupermavenToggle" },
+	opts = {
+		keymaps = {
+			accept_suggestion = "<S-CR>",
+		},
 	},
 }
-
-return plugin

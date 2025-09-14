@@ -1,8 +1,9 @@
-local plugin = {
+---@module "lazy"
+---@type LazyPluginSpec
+return {
 	"nvim-treesitter/nvim-treesitter",
-	build = function()
-		require("nvim-treesitter.install").update({ with_sync = true })()
-	end,
+	opts = {},
+	lazy = false,
+	branch = "main",
+	build = ":TSUpdate",
 }
-
-return plugin

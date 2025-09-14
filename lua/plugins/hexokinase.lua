@@ -1,6 +1,4 @@
-local plugin = {
+return {
 	"rrethy/vim-hexokinase",
 	build = "make hexokinase",
 }
-
-return plugin

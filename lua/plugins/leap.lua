@@ -1,4 +1,4 @@
-local plugin = {
+return {
 	"ggandor/leap.nvim",
 	dependencies = {
 		"tpope/vim-repeat",
@@ -8,5 +8,3 @@ local plugin = {
 		require("leap").create_default_mappings()
 	end,
 }
-
-return plugin

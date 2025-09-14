@@ -1,5 +1,3 @@
-local plugin = {
+return {
 	"mfussenegger/nvim-lint",
 }
-
-return plugin

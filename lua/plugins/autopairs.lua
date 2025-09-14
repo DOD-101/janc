@@ -1,4 +1,4 @@
-local plugin = {
+return {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
 	config = function()
@@ -7,5 +7,3 @@ local plugin = {
 		})
 	end,
 }
-
-return plugin
