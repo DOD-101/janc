@@ -1,7 +1,7 @@
 return {
 	"saghen/blink.cmp",
 	lazy = true,
-	event = "InsertEnter",
+	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		"joshzcold/blink-ripgrep.nvim",
 		{
@@ -22,7 +22,16 @@ return {
 			build = "make install_jsregexp",
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
-				require("luasnip.loaders.from_lua").load({ paths = "./snippets/" })
+				require("luasnip.loaders.from_lua").load({ paths = { "./snippets/" } })
+
+				local ls = require("luasnip")
+
+				vim.keymap.set({ "i", "s" }, "<C-n>", function()
+					ls.jump(1)
+				end, { silent = true })
+				vim.keymap.set({ "i", "s" }, "<C-p>", function()
+					ls.jump(-1)
+				end, { silent = true })
 			end,
 			dependencies = {
 				"rafamadriz/friendly-snippets",
@@ -33,7 +42,6 @@ return {
 
 	-- use a release tag to download pre-built binaries
 	version = "*",
-	-- build = 'cargo build --release',
 	build = "nix run .#build-plugin",
 
 	---@module 'blink.cmp'
@@ -49,20 +57,25 @@ return {
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<C-Space>"] = { "show" },
 			["<C-Enter>"] = { "accept" },
+			["<C-k>"] = { "scroll_documentation_up" },
+			["<C-j>"] = { "scroll_documentation_down" },
 		},
 
 		appearance = {
 			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 			-- Useful for when your theme doesn't support blink.cmp
 			-- Will be removed in a future release
-			use_nvim_cmp_as_default = true,
+			use_nvim_cmp_as_default = false,
 			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "mono",
 		},
 
 		completion = {
-			documentation = { auto_show = true, auto_show_delay_ms = 0 },
+			documentation = { auto_show = true, auto_show_delay_ms = 10 },
+			trigger = {
+				show_on_insert_on_trigger_character = true,
+			},
 		},
 
 		cmdline = {
@@ -81,6 +94,7 @@ return {
 				lsp = {
 					name = "LSP",
 					module = "blink.cmp.sources.lsp",
+					async = true,
 					score_offset = 110,
 				},
 				snippets = {
@@ -101,6 +115,11 @@ return {
 						max_filesize = "500k",
 						search_casing = "--smart-case",
 					},
+				},
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 90,
 				},
 				path = {
 					name = "Path",
