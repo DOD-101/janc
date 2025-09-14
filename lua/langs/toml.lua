@@ -1,7 +1,7 @@
 ---@type Lang
 local lang = {
 	names = { "toml" },
-	formatters = { "taplo" },
+	formatters = {},
 	lsps = {
 		{
 			name = "taplo",
