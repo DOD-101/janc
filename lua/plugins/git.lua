@@ -21,19 +21,15 @@ return {
 			graph_style = graph_style(),
 		},
 		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-
-			-- Only one of these is needed.
-			"nvim-telescope/telescope.nvim", -- optional
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
 		},
 	},
 	{
-		"airblade/vim-gitgutter",
-		config = function()
-			vim.g.gitgutter_map_keys = 0
-			vim.cmd("GitGutterSignsDisable")
-			vim.cmd("GitGutterLineNrHighlightsEnable")
-		end,
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signcolumn = false,
+			numhl = true,
+		},
 	},
 }
