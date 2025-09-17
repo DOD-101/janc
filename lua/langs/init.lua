@@ -41,7 +41,7 @@ for _, lang in ipairs(langs) do
 		formatters[name] = lang.formatters
 	end
 
-	table.insert(treesitters, lang.treesitter)
+	table.insert(treesitters, lang.treesitter or lang.names[1])
 
 	if lang.tabsize then
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
@@ -66,7 +66,7 @@ for _, lang in ipairs(langs) do
 	end
 
 	if lang.linters then
-		--- TODO: We could try being more agressive with the linting here
+		--- NOTE: We could try being more agressive with the linting here
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufWritePost" }, {
 			pattern = lang.patterns,
 			once = false,
@@ -90,8 +90,21 @@ require("conform").setup({
 	},
 })
 
-require("nvim-treesitter").install(treesitters, { summary = true })
-require("nvim-treesitter").update()
+---@module "nvim-treesitter"
+---@type TSConfig
+---@diagnostic disable
+require("nvim-treesitter.configs").setup({
+	ensure_installed = treesitters,
+	auto_install = true,
+	modules = {
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = true,
+		},
+		indent = { enable = true },
+	},
+})
+---@diagnostic enable
 
 --- Print out all tools (LSP, formatters & linters) for all languages
 vim.api.nvim_create_user_command("ListLangTools", function()
