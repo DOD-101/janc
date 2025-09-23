@@ -4,6 +4,7 @@ return {
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		"joshzcold/blink-ripgrep.nvim",
+		"xzbdmw/colorful-menu.nvim",
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
@@ -37,7 +38,6 @@ return {
 				"rafamadriz/friendly-snippets",
 			},
 		},
-		"rafamadriz/friendly-snippets",
 	},
 
 	-- use a release tag to download pre-built binaries
@@ -75,6 +75,23 @@ return {
 			documentation = { auto_show = true, auto_show_delay_ms = 10 },
 			trigger = {
 				show_on_insert_on_trigger_character = true,
+			},
+
+			menu = {
+				draw = {
+					treesitter = { "lsp" },
+					columns = { { "kind_icon" }, { "label", gap = 1 } },
+					components = {
+						label = {
+							text = function(ctx)
+								return require("colorful-menu").blink_components_text(ctx)
+							end,
+							highlight = function(ctx)
+								return require("colorful-menu").blink_components_highlight(ctx)
+							end,
+						},
+					},
+				},
 			},
 		},
 
