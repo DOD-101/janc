@@ -18,4 +18,5 @@ return {
 	require("plugins.theme"),
 	require("plugins.todo"),
 	require("plugins.treesitter"),
+	require("plugins.whichkey"),
 }

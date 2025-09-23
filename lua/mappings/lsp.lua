@@ -34,7 +34,7 @@ vim.keymap.set("n", "ge", function()
 	else
 		vim.diagnostic.goto_next({})
 	end
-end)
+end, { desc = "go to next diagnostic" })
 
 vim.keymap.set("n", "gE", function()
 	local diagnostics = vim.diagnostic.get()
@@ -47,36 +47,40 @@ vim.keymap.set("n", "gE", function()
 	else
 		vim.diagnostic.goto_prev({})
 	end
-end)
+end, { desc = "go to prev diagnostic" })
 
 vim.keymap.set("n", "gd", function()
 	vim.lsp.buf.definition()
-end)
+end, { desc = "go to definition [lsp]" })
 
 vim.keymap.set("n", "gD", function()
 	vim.lsp.buf.declaration()
-end)
+end, { desc = "go to declaration [lsp]" })
 
 vim.keymap.set("n", "gh", function()
 	vim.lsp.buf.hover()
 	require("diagnostic")()
-end)
+end, { desc = "show hover info [lsp]" })
 
 vim.keymap.set("n", "gi", function()
 	vim.lsp.buf.implementation()
-end)
+end, { desc = "go to definition [lsp]" })
 
 vim.keymap.set("n", "gn", function()
 	vim.lsp.buf.rename()
-end)
+end, { desc = "rename item [lsp]" })
 
 vim.keymap.set("n", "gr", function()
 	vim.lsp.buf.references()
-end)
+end, { desc = "go to references [lsp]" })
 
 vim.keymap.set("n", "gI", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end)
+end, { desc = "enable inlay hints [lsp]" })
+
+vim.keymap.set("n", "ga", function()
+	vim.lsp.buf.code_action()
+end, { desc = "show code actions [lsp] " })
 
 -- Go to quickfix entry and close window
 vim.keymap.set("n", "<C-CR>", function()
