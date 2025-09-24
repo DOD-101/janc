@@ -29,10 +29,17 @@ vim.keymap.set("n", "ge", function()
 	local warns = severity_filter(diagnostics, SEVERITY_FILTER_LEVEL, bufnr)
 
 	if warns then
-		vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity[SEVERITY_FILTER_LEVEL] } })
+		vim.diagnostic.jump({
+			severity = { min = vim.diagnostic.severity[SEVERITY_FILTER_LEVEL] },
+			count = 1,
+			float = true,
+		})
 		print(type(diagnostics))
 	else
-		vim.diagnostic.goto_next({})
+		vim.diagnostic.jump({
+			count = 1,
+			float = true,
+		})
 	end
 end, { desc = "go to next diagnostic" })
 
@@ -43,9 +50,16 @@ vim.keymap.set("n", "gE", function()
 	local warns = severity_filter(diagnostics, SEVERITY_FILTER_LEVEL, bufnr)
 
 	if warns then
-		vim.diagnostic.goto_prev({ severity = { min = vim.diagnostic.severity[SEVERITY_FILTER_LEVEL] } })
+		vim.diagnostic.jump({
+			severity = { min = vim.diagnostic.severity[SEVERITY_FILTER_LEVEL] },
+			count = -1,
+			float = true,
+		})
 	else
-		vim.diagnostic.goto_prev({})
+		vim.diagnostic.jump({
+			count = -1,
+			float = true,
+		})
 	end
 end, { desc = "go to prev diagnostic" })
 

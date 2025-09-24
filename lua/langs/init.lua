@@ -56,13 +56,12 @@ for _, lang in ipairs(langs) do
 		goto continue
 	end
 
-	local lspconfig = require("lspconfig")
-
 	for _, lsp in ipairs(lang.lsps) do
-		lspconfig[lsp.name].setup({
+		vim.lsp.config(lsp.name, {
 			settings = lsp.settings,
 			filetypes = lsp.filetypes or require("lspconfig.configs." .. lsp.name).default_config.filetypes,
 		})
+		vim.lsp.enable(lsp.name)
 	end
 
 	if lang.linters then

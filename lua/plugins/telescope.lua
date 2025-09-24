@@ -14,7 +14,8 @@ local function copy_hash_to_clipboard(prompt_bufnr)
 end
 
 return {
-	"nvim-telescope/telescope.nvim",
+	"dod-101/telescope.nvim", -- HACK: Until my PR is merged: https://github.com/nvim-telescope/telescope.nvim/pull/3538
+	branch = "fix-diagnostic-config",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-symbols.nvim",
