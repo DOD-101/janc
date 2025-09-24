@@ -22,7 +22,16 @@ return {
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
+			{
+				"sindrets/diffview.nvim",
+				cmd = {
+					"DiffviewOpen",
+					"DiffviewClose",
+					"DiffviewToggleFiles",
+					"DiffviewFocusFiles",
+					"DiffviewRefresh",
+				},
+			},
 		},
 	},
 	{

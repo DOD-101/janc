@@ -34,7 +34,7 @@ local langs = {
 }
 
 local formatters = {}
-local treesitters = {}
+local treesitters = { "gitcommit" }
 
 for _, lang in ipairs(langs) do
 	for _, name in ipairs(lang.names) do
@@ -104,6 +104,11 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 ---@diagnostic enable
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "gitcommit",
+	command = "TSEnable highlight",
+})
 
 --- Print out all tools (LSP, formatters & linters) for all languages
 vim.api.nvim_create_user_command("ListLangTools", function()

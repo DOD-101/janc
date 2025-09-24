@@ -7,7 +7,7 @@ local function set_shell()
 		return
 	end
 
-	if string.match(shell, "zsh") then
+	if string.match(shell, "zsh") or string.match(shell, "fish") then
 		shell = shell .. " -i"
 	end
 
