@@ -95,20 +95,13 @@ require("conform").setup({
 require("nvim-treesitter.configs").setup({
 	ensure_installed = treesitters,
 	auto_install = true,
-	modules = {
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = true,
-		},
-		indent = { enable = true },
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = true,
 	},
+	indent = { enable = true },
 })
 ---@diagnostic enable
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "gitcommit",
-	command = "TSEnable highlight",
-})
 
 --- Print out all tools (LSP, formatters & linters) for all languages
 vim.api.nvim_create_user_command("ListLangTools", function()
