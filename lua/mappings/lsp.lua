@@ -71,6 +71,10 @@ vim.keymap.set("n", "gD", function()
 	vim.lsp.buf.declaration()
 end, { desc = "go to declaration [lsp]" })
 
+vim.keymap.set("n", "gt", function()
+	vim.lsp.buf.type_definition()
+end, { desc = "go to type definition [lsp]" })
+
 vim.keymap.set("n", "gh", function()
 	vim.lsp.buf.hover()
 	require("diagnostic")()
