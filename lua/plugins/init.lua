@@ -19,4 +19,5 @@ return {
 	require("plugins.todo"),
 	require("plugins.treesitter"),
 	require("plugins.whichkey"),
+	require("plugins.quick-cd"),
 }
