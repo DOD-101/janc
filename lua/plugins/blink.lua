@@ -23,7 +23,7 @@ return {
 			build = "make install_jsregexp",
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
-				require("luasnip.loaders.from_lua").load({ paths = { "./snippets/" } })
+				require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets/" } })
 
 				local ls = require("luasnip")
 
@@ -112,6 +112,14 @@ return {
 					name = "LSP",
 					module = "blink.cmp.sources.lsp",
 					async = true,
+					timeout_ms = 200,
+					score_offset = 110,
+					fallbacks = { "LSP_SYNC" },
+				},
+				lsp_sync = {
+					name = "LSP_SYNC",
+					module = "blink.cmp.sources.lsp",
+					async = false,
 					score_offset = 110,
 				},
 				snippets = {
