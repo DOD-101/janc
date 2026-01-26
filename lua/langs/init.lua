@@ -16,22 +16,22 @@
 ---@field callback function? A callback to override the default setup function
 
 local langs = {
-	require("langs.lua"),
-	require("langs.html"),
 	require("langs.css"),
-	require("langs.js"),
-	require("langs.svelte"),
-	require("langs.json"),
-	require("langs.python"),
-	require("langs.sh"),
-	require("langs.rust"),
-	require("langs.nix"),
+	require("langs.html"),
 	require("langs.hypr"),
-	require("langs.markdown"),
-	require("langs.yaml"),
-	require("langs.toml"),
-	require("langs.yuck"),
 	require("langs.java"),
+	require("langs.js"),
+	require("langs.json"),
+	require("langs.lua"),
+	require("langs.markdown"),
+	require("langs.nix"),
+	require("langs.python"),
+	require("langs.rust"),
+	require("langs.sh"),
+	require("langs.svelte"),
+	require("langs.toml"),
+	require("langs.yaml"),
+	require("langs.yuck"),
 }
 
 local formatters = {}
@@ -42,7 +42,16 @@ for _, lang in ipairs(langs) do
 		formatters[name] = lang.formatters
 	end
 
-	table.insert(treesitters, lang.treesitter or lang.names[1])
+	if lang.treesitter then
+		table.insert(treesitters, lang.treesitter)
+	else
+		vim.list_extend(
+			treesitters,
+			vim.tbl_filter(function(value)
+				return vim.list_contains(require("nvim-treesitter").get_available(), value)
+			end, lang.names)
+		)
+	end
 
 	if lang.tabsize then
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" }, {
@@ -91,19 +100,15 @@ require("conform").setup({
 	},
 })
 
----@module "nvim-treesitter"
----@type TSConfig
----@diagnostic disable
-require("nvim-treesitter.configs").setup({
-	ensure_installed = treesitters,
-	auto_install = true,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = true,
-	},
-	indent = { enable = true },
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = treesitters,
+	once = false,
+	callback = function()
+		vim.treesitter.start()
+	end,
 })
----@diagnostic enable
+
+require("nvim-treesitter").install(treesitters)
 
 --- Print out all tools (LSP, formatters & linters) for all languages
 vim.api.nvim_create_user_command("ListLangTools", function()
