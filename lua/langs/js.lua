@@ -18,6 +18,10 @@ local lang = {
 				},
 			},
 		},
+		{
+			name = "ts_ls",
+			settings = {},
+		},
 	},
 	linters = { "biomejs" },
 	patterns = { "*.js", "*.ts" },

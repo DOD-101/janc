@@ -12,6 +12,7 @@
 ---@field name string The name of the LSP
 ---@field settings table The settings table used in the setup function
 ---@field filetypes string[]? The filetypes for the LSP
+---@field root_dir function? Override function used to determine root dir
 ---@field callback function? A callback to override the default setup function
 
 local langs = {
@@ -60,6 +61,7 @@ for _, lang in ipairs(langs) do
 		vim.lsp.config(lsp.name, {
 			settings = lsp.settings,
 			filetypes = lsp.filetypes or require("lspconfig.configs." .. lsp.name).default_config.filetypes,
+			root_dir = lsp.root_dir,
 		})
 		vim.lsp.enable(lsp.name)
 	end
