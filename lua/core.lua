@@ -40,6 +40,11 @@ vim.o.smartcase = true
 vim.o.splitbelow = true
 vim.g.netrw_browse_split = 2
 
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = { "*" },
+	command = [[%s/\s\+$//e]],
+})
+
 set_shell()
 
 require("lazy-nvim")
