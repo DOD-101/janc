@@ -16,6 +16,7 @@
 ---@field callback function? A callback to override the default setup function
 
 local langs = {
+	require("langs.askama"),
 	require("langs.css"),
 	require("langs.html"),
 	require("langs.hypr"),
