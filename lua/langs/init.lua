@@ -18,6 +18,7 @@
 local langs = {
 	require("langs.askama"),
 	require("langs.css"),
+	require("langs.dart"),
 	require("langs.html"),
 	require("langs.hypr"),
 	require("langs.java"),
