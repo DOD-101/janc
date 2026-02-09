@@ -1,19 +1,7 @@
 ---@type Lang
 local lang = {
 	names = { "python" },
-	lsps = {
-		{
-			name = "basedpyright",
-			settings = {
-				inlayHints = {
-					variableTypes = true,
-					callArgumentNames = true,
-					functionReturnTypes = true,
-					genericTypes = true,
-				},
-			},
-		},
-	},
+	lsps = { "basedpyright" },
 	formatters = { "black" },
 	linters = { "pylint" },
 	patterns = { "*.py" },

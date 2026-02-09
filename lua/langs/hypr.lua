@@ -2,12 +2,7 @@
 local lang = {
 	names = { "hyprlang" },
 	formatters = {},
-	lsps = {
-		{
-			name = "hyprls",
-			settings = {},
-		},
-	},
+	lsps = { "hyprls" },
 	patterns = { "*.conf" },
 }
 

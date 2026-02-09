@@ -1,12 +1,7 @@
 ---@type Lang
 return {
 	names = { "dart" },
-	lsps = {
-		{
-			name = "dartls",
-			settings = {},
-		},
-	},
+	lsps = { "dartls" },
 
 	formatters = {},
 	patterns = { "*.dart" },

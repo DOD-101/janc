@@ -3,18 +3,9 @@ local lang = {
 	names = { "css", "scss" },
 	formatters = { "stylelint", "prettier" },
 	lsps = {
-		{
-			name = "stylelint_lsp",
-			settings = {},
-		},
-		{
-			name = "cssls",
-			settings = {},
-		},
-		{
-			name = "tailwindcss",
-			settings = {},
-		},
+		"stylelint_lsp",
+		"cssls",
+		"tailwindcss",
 	},
 	patterns = { "*.css", "*.scss" },
 	tabsize = 2,

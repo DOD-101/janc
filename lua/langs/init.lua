@@ -3,17 +3,10 @@
 ---@field formatters table A table of formatters to run on the buffer after saving
 ---@field treesitter string? Optional name of the treesitter for the language, defaults to the name
 ---@field linters table? An optional table of linters to run on the buffer
----@field lsps lspConf[] Config relating to the LSP for the language
+---@field lsps string[] Names of lsps for this lang
 ---@field patterns string[] A table of patterns for file extensions for the lang
 ---@field noSetup boolean? Weather to do the default setup for the lang
 ---@field tabsize number? The tabsize in. `nil` will leave this as the default.
-
----@class lspConf A class representing all the config for an LSP
----@field name string The name of the LSP
----@field settings table The settings table used in the setup function
----@field filetypes string[]? The filetypes for the LSP
----@field root_dir function? Override function used to determine root dir
----@field callback function? A callback to override the default setup function
 
 local langs = {
 	require("langs.askama"),
@@ -33,7 +26,6 @@ local langs = {
 	require("langs.svelte"),
 	require("langs.toml"),
 	require("langs.yaml"),
-	require("langs.yuck"),
 }
 
 local formatters = {}
@@ -69,12 +61,7 @@ for _, lang in ipairs(langs) do
 	end
 
 	for _, lsp in ipairs(lang.lsps) do
-		vim.lsp.config(lsp.name, {
-			settings = lsp.settings,
-			filetypes = lsp.filetypes or require("lspconfig.configs." .. lsp.name).default_config.filetypes,
-			root_dir = lsp.root_dir,
-		})
-		vim.lsp.enable(lsp.name)
+		vim.lsp.enable(lsp)
 	end
 
 	if lang.linters then
@@ -118,7 +105,7 @@ vim.api.nvim_create_user_command("ListLangTools", function()
 	for _, lang in ipairs(langs) do
 		output = output .. "--" .. table.concat(lang.names, ", ") .. "--" .. "\nLSPs:"
 		for _, lsp in ipairs(lang.lsps) do
-			output = output .. " " .. lsp.name
+			output = output .. " " .. lsp
 		end
 
 		output = output .. "\nFormatters:"

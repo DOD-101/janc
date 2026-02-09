@@ -2,12 +2,7 @@
 local lang = {
 	names = { "sh" },
 	formatters = { "shfmt" },
-	lsps = {
-		{
-			name = "bashls",
-			settings = {},
-		},
-	},
+	lsps = { "bashls" },
 	treesitter = "bash",
 	patterns = { "*.sh" },
 }

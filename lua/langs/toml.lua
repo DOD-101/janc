@@ -2,15 +2,7 @@
 local lang = {
 	names = { "toml" },
 	formatters = {},
-	lsps = {
-		{
-			name = "taplo",
-			settings = {
-				schemas = require("schemastore").json.schemas(),
-				validate = { enable = true },
-			},
-		},
-	},
+	lsps = { "taplo" },
 	patterns = { "*.toml" },
 }
 
