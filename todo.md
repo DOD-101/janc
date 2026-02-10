@@ -2,16 +2,16 @@
 
 - [ ] Optimize Performance
 
-- [ ] find a way to get better spell checking (typo lsp)
-
 - [ ] make janc more configurable based on the project (e.g: what's if you are
-  using deno (denolsp) or node (ts_ls)?look into rust-tools?) (See: [Refactor](#Refactor))
+  using deno (denolsp) or node (ts_ls)? look into rust-tools) (See: [Refactor](#Refactor))
 
-- [ ] Decide on harpoon. Do I need it?
+- [ ] Remove harpoon.
 
 - [ ] Keep an eye on https://github.com/saghen/blink.cmp/pull/2238
 
 - [ ] Look into conventional commits lsp. (something that shows you previous commits as completions)
+
+    `g log --oneline | grep -e ".* [a-z]*(.*):" | sed "s/.* [a-z]*(\(.*\)):.*/\1/" | sort | uniq`
 
 - [ ] Improve the experience when large texts are printed (less like preview is not searchable)
 
@@ -19,14 +19,8 @@
 
 # Refactor
 
-1. Make more things configurable via `JANC_` env variables and/or potentially some sort of `.janc.lua` file for project-specific config
+1. Use `.nvim.lua` file for project-specific config (execrc)
 
-2. Rework `langs/` to go along with `1.`
-
-3. Improve ergonomics around `:ListLangTools`
+2. Improve ergonomics around `:ListLangTools`
 
     1. Maybe some sort of ui?
-
-
-
-

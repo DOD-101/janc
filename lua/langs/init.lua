@@ -28,6 +28,9 @@ local langs = {
 	require("langs.yaml"),
 }
 
+-- For all langs
+vim.lsp.enable("typos_lsp")
+
 local flattened_res = vim.fn.flatten(langs)
 
 if type(flattened_res) == "number" then
