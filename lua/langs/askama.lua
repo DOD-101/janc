@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	names = { "askama" },
+	name = "askama",
 	lsps = {},
 	formatters = {},
 	tabsize = 2,

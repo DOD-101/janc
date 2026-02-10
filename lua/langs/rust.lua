@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	names = { "rust" },
+	name = "rust",
 	formatters = { "rustfmt" },
 	lsps = { "rust_analyzer" },
 	patterns = { "*.rs" },

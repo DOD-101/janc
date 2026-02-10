@@ -1,6 +1,6 @@
 ---@type Lang
 return {
-	names = { "dart" },
+	name = "dart",
 	lsps = { "dartls" },
 
 	formatters = {},

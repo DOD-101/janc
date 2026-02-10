@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	names = { "lua" },
+	name = "lua",
 	formatters = { "stylua" },
 	linters = { "luacheck" },
 	lsps = { "lua_ls" },

@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	names = { "yaml" },
+	name = "yaml",
 	lsps = { "yamlls" },
 	linters = { "yamllint", "actionlint" },
 	formatters = { "prettier" },

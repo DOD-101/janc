@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	names = { "java" },
+	name = "java",
 	lsps = { "jdtls" },
 	formatters = { "google-java-format" },
 	patterns = { "*.java" },

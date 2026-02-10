@@ -2,7 +2,7 @@
 
 ---@type Lang
 local lang = {
-	names = { "markdown" },
+	name = "markdown",
 	lsps = { "marksman" },
 	formatters = {},
 	patterns = { "*.md" },

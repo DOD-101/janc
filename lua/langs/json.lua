@@ -1,10 +1,16 @@
----@class Lang
-local lang = {
-	names = { "json", "jsonc" },
+---@type Lang
+local json = {
+	name = "json",
 	formatters = { "biome" },
 	linters = { "biomejs" },
 	lsps = { "jsonls" },
-	patterns = { "*.json", "*.jsonc" },
+	patterns = { "*.json" },
 }
 
-return lang
+---@type Lang
+local jsonc = vim.tbl_deep_extend("force", json, {
+	name = "jsonc",
+	patterns = { "*.jsonc" },
+})
+
+return { json, jsonc }

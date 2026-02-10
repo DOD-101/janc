@@ -1,6 +1,6 @@
 ---@type Lang
 return {
-	names = { "svelte" },
+	name = "svelte",
 	formatters = {},
 	lsps = {
 		"denols",

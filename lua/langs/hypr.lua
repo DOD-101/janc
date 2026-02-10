@@ -1,6 +1,6 @@
 ---@type Lang
 local lang = {
-	names = { "hyprlang" },
+	name = "hyprlang",
 	formatters = {},
 	lsps = { "hyprls" },
 	patterns = { "*.conf" },

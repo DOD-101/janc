@@ -1,13 +1,13 @@
----@class Lang A class representing all the config data for a language or a group of languages
----@field names string[] The name of the languages
----@field formatters table A table of formatters to run on the buffer after saving
----@field treesitter string? Optional name of the treesitter for the language, defaults to the name
----@field linters table? An optional table of linters to run on the buffer
+---@class Lang A class representing all the config data for a language
+---@field name string The name of the language
+---@field formatters table Formatters to run on the buffer after saving
+---@field treesitter string? Name of the treesitter for the language, defaults to the name
+---@field linters table? Linters to run on the buffer
 ---@field lsps string[] Names of lsps for this lang
 ---@field patterns string[] A table of patterns for file extensions for the lang
----@field noSetup boolean? Weather to do the default setup for the lang
 ---@field tabsize number? The tabsize in. `nil` will leave this as the default.
 
+---@type Lang[] | Lang[][]
 local langs = {
 	require("langs.askama"),
 	require("langs.css"),
@@ -28,23 +28,26 @@ local langs = {
 	require("langs.yaml"),
 }
 
+local flattened_res = vim.fn.flatten(langs)
+
+if type(flattened_res) == "number" then
+	vim.print("Failed to setup languages. Flattening langs failed.")
+	return
+end
+
+---@type Lang[]
+local flat_langs = flattened_res
+
 local formatters = {}
 local treesitters = { "gitcommit" }
 
-for _, lang in ipairs(langs) do
-	for _, name in ipairs(lang.names) do
-		formatters[name] = lang.formatters
-	end
+for _, lang in ipairs(flat_langs) do
+	formatters[lang.name] = lang.formatters
 
 	if lang.treesitter then
 		table.insert(treesitters, lang.treesitter)
-	else
-		vim.list_extend(
-			treesitters,
-			vim.tbl_filter(function(value)
-				return vim.list_contains(require("nvim-treesitter").get_available(), value)
-			end, lang.names)
-		)
+	elseif vim.list_contains(require("nvim-treesitter").get_available(), lang.name) then
+		table.insert(treesitters, lang.name)
 	end
 
 	if lang.tabsize then
@@ -56,16 +59,12 @@ for _, lang in ipairs(langs) do
 		})
 	end
 
-	if lang.noSetup then
-		goto continue
-	end
-
 	for _, lsp in ipairs(lang.lsps) do
 		vim.lsp.enable(lsp)
 	end
 
 	if lang.linters then
-		--- NOTE: We could try being more agressive with the linting here
+		--- NOTE: We could try being more aggressive with the linting here
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufWritePost" }, {
 			pattern = lang.patterns,
 			once = false,
@@ -74,8 +73,6 @@ for _, lang in ipairs(langs) do
 			end,
 		})
 	end
-
-	::continue::
 end
 
 require("conform").setup({
@@ -91,7 +88,6 @@ require("conform").setup({
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = treesitters,
-	once = false,
 	callback = function()
 		vim.treesitter.start()
 	end,
@@ -102,8 +98,8 @@ require("nvim-treesitter").install(treesitters)
 --- Print out all tools (LSP, formatters & linters) for all languages
 vim.api.nvim_create_user_command("ListLangTools", function()
 	local output = ""
-	for _, lang in ipairs(langs) do
-		output = output .. "--" .. table.concat(lang.names, ", ") .. "--" .. "\nLSPs:"
+	for _, lang in ipairs(flat_langs) do
+		output = output .. "--" .. lang.name .. "--" .. "\nLSPs:"
 		for _, lsp in ipairs(lang.lsps) do
 			output = output .. " " .. lsp
 		end
