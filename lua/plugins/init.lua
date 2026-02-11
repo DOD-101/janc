@@ -5,7 +5,6 @@ return {
 	require("plugins.comment"),
 	require("plugins.conform"),
 	require("plugins.git"),
-	require("plugins.harpoon"),
 	require("plugins.hexokinase"),
 	require("plugins.java"),
 	require("plugins.leap"),

@@ -19,7 +19,6 @@ local catppuccin = {
 		integrations = {
 			gitgutter = true,
 			blink_cmp = true,
-			harpoon = true,
 			indent_blankline = {
 				enabled = true,
 				colored_indent_levels = true,

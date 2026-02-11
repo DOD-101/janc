@@ -3,5 +3,4 @@
 require("mappings.general")
 require("mappings.lsp")
 require("mappings.telescope")
-require("mappings.harpoon")
 require("mappings.git")
