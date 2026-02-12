@@ -16,18 +16,24 @@ local catppuccin = {
 			transparent = false,
 			solid = false,
 		},
-		integrations = {
-			gitgutter = true,
-			blink_cmp = true,
-			indent_blankline = {
-				enabled = true,
-				colored_indent_levels = true,
-				scope_color = "maroon",
-			},
-			leap = true,
-			markdown = true,
-		},
+		auto_integrations = true,
 	},
 }
 
-return { tokyonight, catppuccin }
+---@module "lazy-nvim"
+---@type LazyPluginSpec
+local nordic = {
+	name = "nordic",
+	priority = 1000,
+	opts = {},
+}
+
+local nordic_dir = vim.env.JANC_NORDIC_DIR
+
+if nordic_dir then
+	nordic.dir = nordic_dir
+else
+	table.insert(nordic, "AlexvZyl/nordic.nvim")
+end
+
+return { tokyonight, catppuccin, nordic }
