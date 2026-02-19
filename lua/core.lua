@@ -40,9 +40,13 @@ vim.o.smartcase = true
 vim.o.splitbelow = true
 vim.g.netrw_browse_split = 2
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	command = [[%s/\s\+$//e]],
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		local view = vim.fn.winsaveview()
+		vim.api.nvim_command("silent! undojoin")
+		vim.api.nvim_command("silent keepjumps keeppatterns %s/\\s\\+$//e")
+		vim.fn.winrestview(view)
+	end,
 })
 
 set_shell()
