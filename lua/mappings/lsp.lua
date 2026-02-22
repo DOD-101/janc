@@ -63,34 +63,26 @@ vim.keymap.set("n", "gE", function()
 	end
 end, { desc = "go to prev diagnostic" })
 
-vim.keymap.set("n", "gd", function()
-	vim.lsp.buf.definition()
-end, { desc = "go to definition [lsp]" })
+vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, { desc = "go to definition [lsp]" })
 
 vim.keymap.set("n", "gD", function()
 	vim.lsp.buf.declaration()
 end, { desc = "go to declaration [lsp]" })
 
-vim.keymap.set("n", "gt", function()
-	vim.lsp.buf.type_definition()
-end, { desc = "go to type definition [lsp]" })
+vim.keymap.set("n", "gt", require("telescope.builtin").lsp_type_definitions, { desc = "go to type definition [lsp]" })
 
 vim.keymap.set("n", "gh", function()
 	vim.lsp.buf.hover()
 	require("diagnostic")()
 end, { desc = "show hover info [lsp]" })
 
-vim.keymap.set("n", "gi", function()
-	vim.lsp.buf.implementation()
-end, { desc = "go to definition [lsp]" })
+vim.keymap.set("n", "gi", require("telescope.builtin").lsp_implementations, { desc = "go to definition [lsp]" })
 
 vim.keymap.set("n", "gn", function()
 	vim.lsp.buf.rename()
 end, { desc = "rename item [lsp]" })
 
-vim.keymap.set("n", "gr", function()
-	vim.lsp.buf.references()
-end, { desc = "go to references [lsp]" })
+vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { desc = "go to references [lsp]" })
 
 vim.keymap.set("n", "gI", function()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
