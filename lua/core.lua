@@ -31,6 +31,8 @@ vim.g.netrw_banner = 0
 
 vim.o.undofile = true
 
+vim.o.ex = true
+
 vim.opt.spell = true
 vim.opt.spelllang = { "en_us", "de_de", "es" }
 
