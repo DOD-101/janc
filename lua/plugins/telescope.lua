@@ -14,8 +14,7 @@ local function copy_hash_to_clipboard(prompt_bufnr)
 end
 
 return {
-	"dod-101/telescope.nvim", -- HACK: Until my PR is merged: https://github.com/nvim-telescope/telescope.nvim/pull/3538
-	branch = "fix-diagnostic-config",
+	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-symbols.nvim",
@@ -25,11 +24,21 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		telescope.setup({
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_cursor({
+						layout_config = {
+							height = 15,
+						},
+					}),
+				},
+			},
 			defaults = {
 				file_ignore_patterns = { "%.git/.*", "target" },
 				layout_config = {
@@ -78,8 +87,9 @@ return {
 				},
 			},
 		})
-		require("telescope").load_extension("fzf")
 
+		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("live_grep_args")
+		require("telescope").load_extension("ui-select")
 	end,
 }
