@@ -20,20 +20,14 @@ local catppuccin = {
 	},
 }
 
----@module "lazy-nvim"
+---@module "lazy"
 ---@type LazyPluginSpec
 local nordic = {
+	"AlexvZyl/nordic.nvim",
+	dir = vim.env.JANC_NORDIC_DIR,
 	name = "nordic",
 	priority = 1000,
 	opts = {},
 }
-
-local nordic_dir = vim.env.JANC_NORDIC_DIR
-
-if nordic_dir then
-	nordic.dir = nordic_dir
-else
-	table.insert(nordic, "AlexvZyl/nordic.nvim")
-end
 
 return { tokyonight, catppuccin, nordic }

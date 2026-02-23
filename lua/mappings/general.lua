@@ -1,5 +1,5 @@
 vim.keymap.set("n", "<leader>w", function()
-	vim.cmd("cd %:p:h")
+	vim.cmd("QcdTelescope")
 end, { desc = "Change directory to current file's parent" })
 
 vim.keymap.set("n", "<C-c>", function()

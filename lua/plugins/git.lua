@@ -6,8 +6,8 @@ local function graph_style()
 	end
 end
 
----@module "lazy.core.plugin"
----@type PluginOpts[]
+---@module "lazy"
+---@type LazyPluginSpec[]
 return {
 	{
 		"NeogitOrg/neogit",

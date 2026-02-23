@@ -1,6 +1,11 @@
----@module "lazy.core.plugin"
----@type PluginOpts
+---@module "lazy"
+---@type LazyPluginSpec
 return {
 	"dod-101/quick-cd",
-	opts = {},
+	dir = vim.env.JANC_QUICK_CD_DIR,
+	---@module "quick-cd"
+	---@type SetupOpts
+	opts = {
+		telescope_theme = "dropdown",
+	},
 }
