@@ -1,8 +1,8 @@
 ---@class Lang A class representing all the config data for a language
 ---@field name string The name of the language
----@field formatters table Formatters to run on the buffer after saving
+---@field formatters string[] Formatters to run on the buffer after saving
 ---@field treesitter string? Name of the treesitter for the language, defaults to the name
----@field linters table? Linters to run on the buffer
+---@field linters string[]? Linters to run on the buffer
 ---@field lsps string[] Names of lsps for this lang
 ---@field patterns string[] A table of patterns for file extensions for the lang
 ---@field tabsize number? The tabsize in. `nil` will leave this as the default.
