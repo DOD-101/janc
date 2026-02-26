@@ -34,7 +34,7 @@ vim.o.undofile = true
 vim.o.ex = true
 
 vim.opt.spell = true
-vim.opt.spelllang = { "en_us", "de_de", "es" }
+vim.opt.spelllang = { "en_us", "de_de" }
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
