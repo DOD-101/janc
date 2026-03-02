@@ -10,6 +10,7 @@
 ---@type Lang[] | Lang[][]
 local langs = {
 	require("langs.askama"),
+	require("langs.cpp"),
 	require("langs.css"),
 	require("langs.dart"),
 	require("langs.html"),
