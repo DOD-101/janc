@@ -12,7 +12,6 @@ return {
 	require("plugins.lsp"),
 	require("plugins.lualine"),
 	require("plugins.rainbow"),
-	require("plugins.supermaven"),
 	require("plugins.telescope"),
 	require("plugins.theme"),
 	require("plugins.todo"),
