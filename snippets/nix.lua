@@ -17,4 +17,7 @@ return {
 		t("}"),
 		i(4),
 	}),
+	s({ trig = "system" }, {
+		t("pkgs.stdenv.hostPlatform.system"),
+	}),
 }
