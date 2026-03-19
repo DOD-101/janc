@@ -11,11 +11,11 @@ return {
 	require("plugins.lint"),
 	require("plugins.lsp"),
 	require("plugins.lualine"),
+	require("plugins.quick-cd"),
 	require("plugins.rainbow"),
 	require("plugins.telescope"),
 	require("plugins.theme"),
 	require("plugins.todo"),
 	require("plugins.treesitter"),
 	require("plugins.whichkey"),
-	require("plugins.quick-cd"),
 }

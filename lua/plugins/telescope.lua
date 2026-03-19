@@ -79,7 +79,6 @@ return {
 							["<CR>"] = open_git_show,
 						},
 						n = {
-
 							["<C-CR"] = copy_hash_to_clipboard,
 							["<CR>"] = open_git_show,
 						},
