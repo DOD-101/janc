@@ -1,13 +1,9 @@
 ---@type Lang
 local lang = {
 	name = "rust",
-	formatters = { "rustfmt" },
+	formatters = {},
 	lsps = { "rust_analyzer" },
 	patterns = { "*.rs" },
-}
-
-require("conform").formatters.rustfmt = {
-	command = "cargo fmt",
 }
 
 return lang
