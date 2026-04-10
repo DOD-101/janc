@@ -12,9 +12,9 @@ end, { desc = "disbale search highlight" })
 
 -- tabs
 
-vim.keymap.set("n", "<C-t>", ":tabnew<CR>", { noremap = true, silent = true, desc = "New tab" })
-vim.keymap.set("n", "<C-l>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Tab next" })
-vim.keymap.set("n", "<C-h>", ":tabprevious<CR>", { noremap = true, silent = true, desc = "Tab previous" })
+vim.keymap.set("n", "<C-t>", "<cmd>tabnew<CR>", { noremap = true, silent = true, desc = "New tab" })
+vim.keymap.set("n", "<C-l>", "<cmd>tabnext<CR>", { noremap = true, silent = true, desc = "Tab next" })
+vim.keymap.set("n", "<C-h>", "<cmd>tabprevious<CR>", { noremap = true, silent = true, desc = "Tab previous" })
 
 -- insert lines
 vim.api.nvim_set_keymap(
@@ -37,16 +37,16 @@ vim.keymap.set("n", "<A-j>", "<C-w>j", { noremap = true, silent = true }) -- Dow
 vim.keymap.set("n", "<A-h>", "<C-w>h", { noremap = true, silent = true }) -- Left
 vim.keymap.set("n", "<A-l>", "<C-w>l", { noremap = true, silent = true }) -- Right
 -- horizontal
-vim.keymap.set("n", "<A-S>", ":split<CR>", { noremap = true, silent = true }) -- create new split
-vim.keymap.set("n", "<A-S-+>", ":resize +5<CR>", { noremap = true, silent = true }) -- Increase pane size
-vim.keymap.set("n", "<A-S-->", ":resize -5<CR>", { noremap = true, silent = true }) -- Decrease pane size
+vim.keymap.set("n", "<A-S>", "<cmd>split<CR>", { noremap = true, silent = true }) -- create new split
+vim.keymap.set("n", "<A-S-+>", "<cmd>resize +5<CR>", { noremap = true, silent = true }) -- Increase pane size
+vim.keymap.set("n", "<A-S-->", "<cmd>resize -5<CR>", { noremap = true, silent = true }) -- Decrease pane size
 -- vertical
-vim.keymap.set("n", "<A-s>", ":vertical split<CR>", { noremap = true, silent = true }) -- create new split
-vim.keymap.set("n", "<A-+>", ":vertical resize +5<CR>", { noremap = true, silent = true }) -- Increase pane size
-vim.keymap.set("n", "<A-->", ":vertical resize -5<CR>", { noremap = true, silent = true }) -- Decrease pane size
+vim.keymap.set("n", "<A-s>", "<cmd>vsplit<CR>", { noremap = true, silent = true }) -- create new split
+vim.keymap.set("n", "<A-+>", "<cmd>vertical resize +5<CR>", { noremap = true, silent = true }) -- Increase pane size
+vim.keymap.set("n", "<A-->", "<cmd>vertical resize -5<CR>", { noremap = true, silent = true }) -- Decrease pane size
 
 -- copy the contents of "0 to the system clipboard
-vim.keymap.set("n", "<C-y>", ":let @+ = @0<CR>", { noremap = true, silent = true, desc = "copy to system clipboard" })
+vim.keymap.set("n", "<C-y>", "<cmd>let @+ = @0<CR>", { noremap = true, silent = true, desc = "copy to system clipboard" })
 
 local job_id = -1
 vim.keymap.set("n", "gm", function()
