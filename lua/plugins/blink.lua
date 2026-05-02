@@ -19,7 +19,6 @@ return {
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
-			-- install jsregexp (optional!)
 			build = "make install_jsregexp",
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
@@ -40,25 +39,20 @@ return {
 		},
 	},
 
-	-- use a release tag to download pre-built binaries
 	version = "*",
 	build = "nix run .#build-plugin",
 
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
-		-- 'default' for mappings similar to built-in completion
-		-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-		-- See the full "keymap" documentation for information on defining your own keymap.
 		keymap = {
 			preset = "none",
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<C-Space>"] = { "show" },
 			["<C-Enter>"] = { "accept" },
-			["<C-k>"] = { "scroll_documentation_up" },
-			["<C-j>"] = { "scroll_documentation_down" },
+			["<M-k>"] = { "scroll_documentation_up" },
+			["<M-j>"] = { "scroll_documentation_down" },
 		},
 
 		appearance = {
@@ -73,6 +67,11 @@ return {
 
 		completion = {
 			documentation = { auto_show = true, auto_show_delay_ms = 10 },
+			ghost_text = {
+				enabled = true,
+				show_with_menu = true,
+				show_with_selection = false,
+			},
 			trigger = {
 				show_on_insert_on_trigger_character = true,
 			},
