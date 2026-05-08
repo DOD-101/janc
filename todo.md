@@ -1,11 +1,7 @@
 ## TODO
 
-- [ ] Optimize Performance
-
 - [ ] make janc more configurable based on the project (e.g: what's if you are
   using deno (denolsp) or node (ts_ls)? look into rust-tools) (See: [Refactor](#Refactor))
-
-- [ ] Keep an eye on https://github.com/saghen/blink.cmp/pull/2238
 
 - [ ] Look into conventional commits lsp. (something that shows you previous commits as completions)
 
