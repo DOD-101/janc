@@ -63,8 +63,8 @@ for _, lang in ipairs(flat_langs) do
 		})
 	end
 
-	for _, lsp in ipairs(lang.lsps) do
-		if not vim.env.JANC_NO_LSPS then
+	if not vim.env.JANC_NO_LSPS then
+		for _, lsp in ipairs(lang.lsps) do
 			vim.lsp.enable(lsp)
 		end
 	end
