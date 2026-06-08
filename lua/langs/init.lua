@@ -29,6 +29,14 @@ local langs = {
 	require("langs.yaml"),
 }
 
+vim.lsp.config("commit-lsp", {
+	cmd = { "commit-lsp", "run" },
+	root_markers = { ".git" },
+	filetypes = { "gitcommit" },
+})
+
+vim.lsp.enable("commit-lsp")
+
 -- For all langs
 vim.lsp.enable("typos_lsp")
 
