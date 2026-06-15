@@ -16,4 +16,20 @@ return {
 		i(6),
 		t("}"),
 	}),
+	s("benchmark", {
+		t({ "let start = std::time::Instant::now();", "" }),
+		c(1, {
+			t([[dbg!(start.elapsed());]]),
+			t([[println!("Time Taken: {}ms", start.elapsed().as_millis());]]),
+			t([[log::info!("Time Taken: {}ms", start.elapsed().as_millis());]]),
+		}),
+	}),
+	s("benchmark log", {
+		t({ "let start = std::time::Instant::now();", "" }),
+		c(1, {
+			t([[dbg!(start.elapsed());]]),
+			t([[println!("Time Taken: {}ms", start.elapsed().as_millis());]]),
+			t([[log::info!("Time Taken: {}ms", start.elapsed().as_millis());]]),
+		}),
+	}),
 }
