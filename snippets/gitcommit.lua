@@ -18,4 +18,25 @@ return {
 			}),
 		})
 	),
+	s("deps", {
+		t("feat(deps): update lazy-lock.json"),
+	}, {
+		show_condition = function()
+			-- only show if lazy-lock.json has been modified
+			local result = vim.system({
+				"git",
+				"status",
+				"--porcelain",
+				"--",
+				"lazy-lock.json",
+			}, { text = true }):wait()
+
+			-- Not a git repo or git failed.
+			if result.code ~= 0 then
+				return false
+			end
+
+			return result.stdout ~= ""
+		end,
+	}),
 }
