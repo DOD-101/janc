@@ -11,10 +11,10 @@
 
 - [ ] Improve experience around quick fix lists (binds, adding and removing to and form them, ...)
 
+- [ ] add mapping for rotating splits
+
 # Refactor
 
-1. Use `.nvim.lua` file for project-specific config (execrc)
-
-2. Improve ergonomics around `:ListLangTools`
+1. Improve ergonomics around `:ListLangTools`
 
     1. Maybe some sort of ui?
