@@ -1,0 +1,103 @@
+[[scopes]]
+name = "core"
+summary = "Changes to core neovim config"
+description = """
+Applies to init.lua, lua/core.lua, lua/lazy-nvim.lua, lua/diagnostic.lua,
+and general editor behavior settings.
+"""
+
+[[scopes]]
+name = "langs"
+summary = "Changes to language-related config"
+description = """
+Mostly applies to the files inside lua/langs
+"""
+
+[[scopes]]
+name = "lsp"
+summary = "Changes to LSP configuration"
+description = """
+Applies to after/lsp/ and lua/plugins/lsp.lua.
+Covers language server setup, capabilities, and mappings.
+"""
+
+[[scopes]]
+name = "plugins"
+summary = "Changes to plugin configuration"
+description = """
+Applies to lua/plugins/ (except those with dedicated scopes like blink,
+telescope, git, theme, treesitter, whichkey, lint, todo, rainbow, comment,
+autopairs, lualine, quick-cd).
+"""
+
+[[scopes]]
+name = "blink"
+summary = "Changes to blink.cmp config"
+description = """
+Applies to lua/plugins/blink.lua.
+Completion engine configuration.
+"""
+
+[[scopes]]
+name = "telescope"
+summary = "Changes to telescope config"
+description = """
+Applies to lua/plugins/telescope.lua and lua/mappings/telescope.lua.
+Fuzzy finder and picker configuration.
+"""
+
+[[scopes]]
+name = "mappings"
+summary = "Changes to key mappings"
+description = """
+Applies to lua/mappings/.
+Keybinding definitions and remappings.
+"""
+
+[[scopes]]
+name = "snippets"
+summary = "Changes to snippets"
+description = """
+Applies to the snippets/ directory.
+Custom snippet definitions for various languages.
+"""
+
+[[scopes]]
+name = "git"
+summary = "Changes to git integration config"
+description = """
+Applies to lua/plugins/git.lua and lua/mappings/git.lua.
+Git-related plugin configuration (fugitive, gitsigns, etc.).
+"""
+
+[[scopes]]
+name = "deps"
+summary = "Changes to dependencies"
+description = """
+Applies to lazy-lock.json.
+Plugin version bumps and dependency updates.
+"""
+
+[[scopes]]
+name = "colorscheme"
+summary = "Changes to colorscheme/theme"
+description = """
+Applies to lua/plugins/theme.lua and color-related config.
+Editor colorscheme and highlight group changes.
+"""
+
+[[scopes]]
+name = "treesitter"
+summary = "Changes to treesitter config"
+description = """
+Applies to lua/plugins/treesitter.lua.
+Syntax highlighting and treesitter parser configuration.
+"""
+
+[[scopes]]
+name = "spell"
+summary = "Changes to spell checking"
+description = """
+Applies to the spell/ directory.
+Custom dictionary and spellfile updates.
+"""
