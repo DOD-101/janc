@@ -10,6 +10,7 @@ return {
 	require("plugins.lint"),
 	require("plugins.lsp"),
 	require("plugins.lualine"),
+	require("plugins.opencode"),
 	require("plugins.quick-cd"),
 	require("plugins.rainbow"),
 	require("plugins.telescope"),
