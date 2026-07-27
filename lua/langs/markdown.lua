@@ -1,4 +1,4 @@
--- TODO: Once https://github.com/denoland/deno/issues/19728 is fixed add deno fmt as a formatter
+-- TODO: Once https://github.com/denoland/deno/issues/19728 is fixed add deno fmt as a formatter (do it yourself, no progress in months)
 
 ---@type Lang
 local lang = {
