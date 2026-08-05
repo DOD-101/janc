@@ -9,13 +9,13 @@
 
 ---@type Lang[] | Lang[][]
 local langs = {
-	require("langs.askama"),
 	require("langs.cpp"),
 	require("langs.css"),
 	require("langs.dart"),
 	require("langs.html"),
 	require("langs.hypr"),
 	require("langs.java"),
+	require("langs.templating"),
 	require("langs.js"),
 	require("langs.json"),
 	require("langs.lua"),
