@@ -16,29 +16,37 @@ end
 ---@type vim.lsp.Config
 return {
 	settings = {
-		cargo = {
-			buildScripts = {
-				enable = true,
-			},
-		},
-		procMacro = {
-			enable = true,
-		},
 		["rust-analyzer"] = {
-			checkOnSave = true,
-			allFeatures = true,
-			preferSelf = true,
-			inlayHints = {
-				implicitDrops = {
-					enable = true,
-				},
-			},
 			cargo = {
-				features = cargo_features or "all",
+				buildScripts = { enable = true },
+				features = #cargo_features > 0 and cargo_features or "all",
 			},
-
+			procMacro = { enable = true },
+			checkOnSave = true,
+			preferSelf = true,
 			check = {
 				command = "clippy",
+				allTargets = true,
+			},
+			diagnostics = {
+				enable = true,
+				style = { enable = true },
+			},
+			highlightRelated = {
+				highlights = { enable = true },
+			},
+			assist = {
+				expressionFillDefault = "todo",
+			},
+			completion = {
+				autoimport = { enable = true },
+			},
+			caching = { enable = true },
+			inlayHints = {
+				implicitDrops = { enable = true },
+				lifetimeElisionHints = { enable = "always" },
+				parameterHints = { enable = true },
+				closureReturnTypeHints = { enable = "with_block" },
 			},
 		},
 	},
